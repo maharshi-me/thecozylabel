@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load widget_tweaks %}
+
+
+{% block head_title %}{% trans "Sign Up" %}{% endblock %}
+
+{% block content %}
+
+<div class="container mb-container">
+        <div class="row pt-4 justify-content-center">
+          <div class="col-lg-6 col-sm-12 col-md-12">
+
+
+                <section class="section pt-4">
+                    <hr class="mb-5">
+                    <!-- Material form login -->
+                    <div class="card">
+
+                      <!--Card content-->
+                      <div class="card-body px-lg-5 pt-0">
+                      
+
+          
+                        <!-- Form -->
+                        <form class="text-center signup" method='POST' action="{% url 'account_signup' %}">
+
+                          <!-- Email -->
+                          {% csrf_token %}
+                          {% if form.errors %}
+                            {% for error in form.non_field_errors %}
+                                <div class="alert alert-danger">
+                                    <strong>{{ error|escape }}</strong>
+                                </div>
+                            {% endfor %}
+                            {% for error in form.field.errors %}
+                                <div class="alert alert-danger">
+                                    <strong>{{ error|escape }}</strong>
+                                </div>
+                            {% endfor %}
+                          {% endif %}
+                          <div class="md-form">
+                            <input type="email" name='email' id="materialLoginFormEmail" class="form-control">
+                            <label for="materialLoginFormEmail">E-mail</label>
+                            {% for error in form.email.errors %}
+                            <p style="color:red"><small>{{error}}</small></p>
+                            {% endfor %}
+                          </div>
+                          <!-- Password -->
+                          <div class="md-form">
+                            <input type="password" name='password1' id="materialLoginFormPassword" class="form-control">
+                            <label for="materialLoginFormPassword">Password</label>
+                            {% for error in form.password1.errors %}
+                            <p style="color:red"><small>{{error}}</small></p>
+                            {% endfor %}
+                          </div>
+                          <div class="md-form">
+                            <input type="password" name='password2' id="materialLoginFormPassword2" class="form-control">
+                            <label for="materialLoginFormPassword2">Password (again) </label>
+                            {% for error in form.password2.errors %}
+                            <p style="color:red"><small>{{error}}</small></p>
+                            {% endfor %}
+                          </div>
+
+                      
+
+                          <!-- Sign in button -->
+                        <button class="btn btn-primary btn-lg btn-block waves-effect waves-light mb-4" type="submit">Sign Up</button>
+
+                          <!-- Register -->
+                          <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+
+
+                        </form>
+                        <!-- Form -->
+
+                      </div>
+
+                    </div>
+
+
+                </section>
+          </div>
+
+        </div>
+</div>
+
+
+{% endblock %}

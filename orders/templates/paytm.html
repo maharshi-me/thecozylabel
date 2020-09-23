@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<body class="grey lighten-3">
+
+  <!--Main layout-->
+  <main class="mt-5 pt-4">
+    <div class="container wow fadeIn">
+
+      <!-- Heading -->
+      <h2 class="my-5 h2 text-center">Redirecting you to the merchant Page</h2>
+      <h3>Please Do not refresh page</h3>
+
+
+        <form method="POST" action="https://securegw-stage.paytm.in/order/process" name="paytm">
+          {% for key, value in param_dict.items %}
+          <input type="hidden" name="{{key}}" value="{{value}}">
+          {% endfor %}
+        </form>
+
+
+
+
+
+    </div>
+  </main>
+  <!--Main layout-->
+  <script type="text/javascript">
+    document.paytm.submit();
+
+  </script>
+{% endblock content %}
+
+
+ 

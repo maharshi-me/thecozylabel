@@ -1,0 +1,74 @@
+{% load static %}
+{% load cart_template_tags %}
+<nav class="navbar navbar-expand-lg navbar-light white scrolling-navbar">
+    <div class="container">
+
+    
+      <!-- Brand -->
+      <a class="navbar-brand" href="{% url 'products:list_products' %}">
+        <div class="nav-control">
+          <img src="{% static 'images/logo.png'%}" width="100%" alt="">
+          
+        </div>
+        
+      </a>
+
+
+
+      <!-- Collapse -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+      <!-- Links -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+
+        <!-- Right -->
+        <ul class="navbar-nav ml-auto">
+
+          <li class="nav-item">
+            <a href="{% url 'a:dashboard' %}" class="nav-link waves-effect">
+              <span>Orders</span>
+            </a>
+          </li>
+
+          
+          <li class="nav-item">
+            <a href="{% url 'a:contacts-list' %}" class="nav-link waves-effect">
+              <span>Contact Forms</span>
+            </a>
+          </li>
+
+          
+          <li class="nav-item">
+            <a href="{% url 'a:item-list' %}" class="nav-link waves-effect">
+              <span>Items</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{% url 'a:carousel-list' %}" class="nav-link waves-effect">
+              <span>Carousels</span>
+            </a>
+          </li>
+
+
+
+
+
+          <li class="nav-item">
+            <a href="/accounts/logout/" class="nav-link waves-effect">
+              <span>Logout</span>
+            </a>
+          </li>
+
+
+
+        </ul>
+
+      </div>
+
+    </div>
+  </nav>

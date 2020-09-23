@@ -1,0 +1,76 @@
+{% extends 'admin_base.html' %}
+{% block content %}
+
+
+  <!--Main layout-->
+  <main class="">
+    <div class="container">
+
+      <!--Grid row-->
+      <div class="row wow fadeIn justify-content-center">
+
+        <!--Grid column-->
+        <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
+                 <!--Card-->
+          <div class="card" style='width:100%; overflow-x:auto;'>
+
+            <!--Card content-->
+            <div class="card-body">
+
+              <!-- Table  -->
+              <table class="table">
+                 <thead class="blue-grey lighten-4">
+                  <tr>
+                    <th colspan='2'>Contact Form Details</th>
+                  </tr>
+                </thead>
+
+                <!-- Table body -->
+                <tbody>
+                  <tr>
+                    <th scope="row">Email</th>
+                    <td>{{contact.email}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Name</th>
+                    <td>{{contact.name}}</td>
+                  </tr>
+                  
+                  <tr>
+                    <th scope="row">Submitted Time</th>
+                    <td>{{contact.timestamp}}</td>
+                  </tr>
+                                    
+                  <tr>
+                    <th scope="row">Message</th>
+                    <td>{{contact.message}}</td>
+                  </tr>
+                  {% if contact.image %}
+                  
+                  <tr>
+                    <th scope="row">Image</th>
+                    <td><a href='{{contact.image.url}}' target='blank'><img src="{{contact.image.url}}" alt="Image"
+						class="media-md img-fluid z-depth-0" width="50px" height="50px"/></a></td>
+                  </tr>
+
+                  {% endif %}
+                  <tr>
+                    <th scope="row"></th>
+                    <td><a class='btn btn-primary waves-effect waves-light' href='mailto:{{contact.email}}'>Reply</a></td>
+                  </tr>
+
+
+                </tbody>
+                <!-- Table body -->
+              </table>
+ 
+            </div>
+
+          </div>
+          <!--/.Card-->
+        </div>
+      </div>
+    </div>
+  </main>
+
+{% endblock content %}

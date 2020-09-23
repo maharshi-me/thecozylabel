@@ -1,0 +1,227 @@
+body{
+    overflow-x: hidden;
+}
+.my-img{
+    height: 100%;
+    width: auto;
+}
+
+.side-nav{
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+.main-admin{
+    margin-left: 250px;
+    overflow-x: hidden;
+}
+.my-brand{
+    padding:20px;
+}
+
+.content{
+    padding: 50px;
+    padding-top: 0px;
+}
+
+.cart-img{
+    height:50px;
+    width:50px;
+}
+
+.table td{
+    vertical-align: middle;
+}
+.w-my{
+    max-width: 150px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.over-x-auto{
+    overflow-x: auto;
+}
+.product-img{
+    max-height: 250px;
+    overflow: hidden;
+    margin: 5px;
+}
+
+.fb-color{
+    background-color: #3b5998;
+    color: white;
+}
+.fb-color:hover{
+    color: white;
+}
+.google-color{
+    background-color: #DB4437;
+    color: white;
+}
+.google-color:hover{
+    color: white;
+}
+
+@media (max-width: 992px) {
+    .media-md{
+        display: none;
+    }
+}
+.money{
+    font-family: 'Bree Serif', sans-serif;
+    font-size: 20px;
+    text-shadow: 3px 3px #c2cfea;
+    color: #525F7A;
+}
+.money-strike{
+    margin-left: 5px;
+    font-family: 'Bree Serif', sans-serif;
+    font-size: 14px;
+}
+@media (max-width: 992px) {
+    .money{
+        font-size: 12px;
+    }
+    .money-strike{
+        font-size: 9px;
+    }
+    
+}
+.money-d{
+    font-family: 'Bree Serif', sans-serif;
+    font-size: 24px;
+    text-shadow: 3px 3px #c2cfea;
+    color: #525F7A;
+}
+.money-strike-d{
+    margin-left: 5px;
+    font-family: 'Bree Serif', sans-serif;
+    font-size: 18px;
+}
+.item-card{
+    box-shadow: 0 12px 15px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+}
+.title-font{
+    font-family: 'Sen', sans-serif;
+    font-size: 16px;
+}
+.title-font-d{
+    font-family: 'Sen', sans-serif;
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+.label-size{
+    font-weight: 500;
+}
+.size{
+    font-size: 18px;
+}
+.mb-container{
+    min-height:75vh;
+}
+.custom-control{
+    display: inline-block;
+}
+.gg-radio:hover{
+    cursor: pointer;
+}
+
+
+.my-label{
+    font-weight: 300;
+    color: #757575;
+  }
+
+.page-footer{
+    font-family: 'Baloo 2', cursive;
+}
+
+.dropbtn {
+  background-color: #929fba;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #929fba;}
+
+.al{
+    
+        color: black;
+        border: 2px solid gray;
+        margin: 2px;
+        padding: 5px 5px;
+        width: 40px;
+        height:40px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+      
+}
+
+  .al:hover {
+    background-color: gray;
+    color: black;
+  }
+  .al-active{
+    background-color: grey;
+    color: black;
+    border: 2px solid black !important;
+    padding: 5px 5px;
+    width: 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+.cl{
+    width: 30px;
+    height:30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+  }
+  
+  
+  .cl:hover {
+    border: 2px solid gray;
+  }
+
+.cl-active{
+    border: 2px solid black !important;
+}
+.navbar-brand{
+    width: 200px;
+}
+

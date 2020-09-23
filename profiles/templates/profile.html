@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <!--Main layout-->
+<div class="container">
+        <div class="row pt-4 justify-content-center">
+            <div class="col-lg-6 col-sm-12 col-md-12">
+
+
+                <section class="section pt-4">
+                    <h4 class="font-weight-bold mt-4 dark-grey-text"><strong>Your Account</strong></h4>
+                    <hr class="mb-5">
+
+                    <section>
+                                        <!--Card-->
+                        <div class="card card-ecommerce mb-4">
+                            <div class="view overlay">
+                                <div class="card-body text-center">      
+                                    <h5 class="card-title mb-1"><strong>Your Orders</strong></h5>
+                                </div>
+                                <a href='{% url 'profiles:your-orders' %}'>
+                                    <div class="mask rgba-white-slight waves-effect waves-light"></div>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="card card-ecommerce mb-4">
+                            <div class="view overlay">
+                                <div class="card-body text-center">      
+                                    <h5 class="card-title mb-1"><strong>Change Password</strong></h5>
+                                </div>
+                                <a href='/accounts/password/change/'>
+                                    <div class="mask rgba-white-slight waves-effect waves-light"></div>
+                                </a>
+                            </div>
+                        </div>
+
+
+
+                    </section>
+
+                </section>
+            </div>
+
+        </div>
+</div>
+<br><br><br><br>
+                    
+{% endblock content %}
+  

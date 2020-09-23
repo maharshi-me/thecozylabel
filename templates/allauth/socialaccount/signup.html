@@ -1,0 +1,38 @@
+{% extends "socialaccount/base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Signup" %}{% endblock %}
+
+{% block content %}
+
+<div class="container mb-container">
+        <div class="row pt-4 justify-content-center">
+          <div class="col-lg-6 col-sm-12 col-md-12">
+
+
+                <section class="section pt-4">
+                    <hr class="mb-5">
+                    <div class="card">
+
+
+                      <!--Card content-->
+                      <div class="card-body px-lg-5 pt-5">
+                      
+                          <!-- Social login -->
+                          <p>An account already present with this email. Please <a href="/accounts/login">sign in</a> with email.
+                          Click here if you <a href="/accounts/password/reset/">Forgot your password.</a></p>
+                        </form>
+                        <!-- Form -->
+
+                      </div>
+
+                    </div>
+                    
+
+                </section>
+          </div>
+
+        </div>
+</div>
+{% endblock %}

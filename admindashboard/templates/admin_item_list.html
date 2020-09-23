@@ -1,0 +1,70 @@
+{% extends 'admin_base.html' %}
+
+
+
+{% block content %}
+
+  <!--Main layout-->
+  <main class="">
+    <div class="container">
+
+      <!--Grid row-->
+      <div class="row wow fadeIn justify-content-center">
+
+        <!--Grid column-->
+        <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
+
+          <!--Card-->
+          <div class="card" style='width:100%; overflow-x:auto;'>
+
+            <!--Card content-->
+            <div class="card-body">
+
+             <table class="table">
+                            <!-- Table head -->
+                            <thead class="blue-grey lighten-4">
+                            <tr>
+                                <th>Item Name</th>
+                                <th>Category</th>
+                                <th>Price</th>
+                                <th>Discount Price</th>
+                                <th></th>
+
+                            </tr>
+                            </thead>
+                            <!-- Table head -->
+
+                            <!-- Table body -->
+                            <tbody>
+                            {% for item in items %}
+                            <tr>
+                                <td>{{item.title}}</td>
+                                <td>{{item.category.name}}</td>
+                                <td>Rs. {{item.price}}</td>
+                                <td>{% if item.discount_price %}
+                                Rs. {{item.discount_price}}
+                                {% endif %}
+                                </td>
+                                <td><a class='btn btn-sm btn-primary' href="{% url 'a:item-edit' pk=item.pk %}">Edit</a>
+                                  <a class='btn btn-sm btn-danger' href="{% url 'a:item-delete' pk=item.pk %}">Delete</a>
+                                
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                            <!-- Table body -->
+                        </table>
+                      <a class='btn btn-sm btn-warning' href="{% url 'a:item-create' %}">Add New</a>
+
+
+
+            </div>
+
+          </div>
+          <!--/.Card-->
+
+        </div>
+      </div>
+    </div>
+  </main>
+{% endblock content %}

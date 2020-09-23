@@ -1,0 +1,64 @@
+<!doctype html>
+{% load static %}
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link href="{% static 'css/pdf.css' %}" rel="stylesheet">
+    <title>Invoice</title>
+    <meta name="description" content="Invoice demo sample">
+    <meta name="author" content="Kozea">
+  </head>
+ 
+  <body>
+    <h1>Invoice</h1>
+ 
+    <aside>
+      <address id="from">
+        The Cozy Label
+      </address>
+ 
+      <address id="to">
+        {{order.shipping_details.first_name}} {{order.shipping_details.last_name}},
+        {{order.shipping_details.address1}},
+        {{order.shipping_details.address2}},
+        {{order.shipping_details.city}},
+        {{order.shipping_details.state}}.
+        Zip code: {{order.shipping_details.zipcode}}
+      </address>
+    </aside>
+ 
+    <dl id="informations">
+      <dt>Order Id </dt>
+      <dd>{{order.order_id}}</dd>
+      <dt>Date</dt>
+      <dd>{{order.timestamp|date}}</dd>
+    </dl>
+ 
+    <table>
+      <thead>
+        <th>Item</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Subtotal</th>
+      </thead>
+      <tbody>
+        {% for item in order.orderitem_set.all %}
+        <tr>
+          <td>{{item.item_name}} s: {{item.size}} c: {{item.color}}</td>
+          <td>₹ {{item.price_each}}</td>
+          <td>{{item.quantity}}</td>
+          <td>₹ {{item.price_total}}</td>
+        </tr>
+        {% endfor %}
+       
+        <tr>
+          <td></td>
+          <td></td>
+          <td>Total<br>(Including 5% GST)</td>
+          <td>₹ {{order.total}}</td>
+        </tr>
+      </tbody>
+    </table>
+ 
+  </body>
+</html>

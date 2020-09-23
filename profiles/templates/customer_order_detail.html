@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+  <!--Main layout-->
+<div class="container">
+        <div class="row pt-4 justify-content-center">
+
+            <!-- Content -->
+            <div class="col-lg-10 col-sm-12 col-md-12">
+
+                <section class="section pt-4">
+                    <h4 class="font-weight-bold mt-4 dark-grey-text"><strong>Your Order Details</strong></h4>
+                    <hr class="mb-5">
+
+                    <div class="card mt-4">
+                      <h5 class="card-header h5">Order #{{order.order_id}}</h5>
+
+                      <div class="card-body" style='overflow-x:auto;'>
+                        {% for orderitem in order.orderitem_set.all %}
+                          <table class="table">
+
+                              <thead>
+                                <tr>
+                                  <th>
+                                    <div class='w-my'>
+                                      <img src="{{orderitem.item.image.url}}" alt="Image"
+                                        class="img-fluid z-depth-0" width="50px" height="50px">
+                                    </div>
+                                  </th>
+                                  <th>
+                                    <h5 class="card-title">{{orderitem.item_name}}</h5>
+                                  </th>
+                                </tr>
+                              </thead>
+               
+                              <tbody>
+                              
+                                
+                                <tr>
+                                  <td class="card-text">Size:</td>
+                                  <td class="card-text">{{orderitem.size}}</td>
+                                </tr>
+                                <tr>
+                                  <td class="card-text">Quantity:</td>
+                                  <td class="card-text">{{orderitem.quantity}}</td>
+                                </tr>
+                                <tr>
+                                  <td class="card-text">Price:</td>
+                                  <td class="card-text">{{orderitem.price_total}}</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                        {% endfor %} 
+                        </div>
+                        <div class="card-body" style='overflow-x:auto;'>
+
+                        <table class="table">
+                              <tbody>
+                                <tr>
+                                  <td class="card-text">Total Price:</td>
+                                  <td class="card-text">Rs. {{order.total}}</td>
+                                </tr>
+                                
+                                <tr>
+                                  <td class="card-text">Status:</td>
+                                  <td>
+                                  {% if order.is_paid %}
+                            <span class="badge badge-success">Payment Success</span>
+                        {% else %}
+                            <span class="badge badge-warning">Payment Failed</span>
+                        {% endif %}
+                                  </td>
+                                </tr>
+                                {% if order.transaction_id %}
+                                <tr>
+                                  <td class="card-text">Transaction ID:</td>
+                                  <td class="card-text">{{order.transaction_id}}</td>
+                                </tr>
+                                {% endif %}
+                              </tbody>
+                            </table>   
+                      </div>
+                    </div>
+                </section>
+
+            </div>
+            <!-- /.Content -->
+
+        </div>
+</div>
+                    
+{% endblock content %}
