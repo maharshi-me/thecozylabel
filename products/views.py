@@ -153,20 +153,20 @@ class ContactFormPage(View):
         form = ContactForm(request.POST, request.FILES)
         if form.is_valid():
             c = form.save()
-            subject = 'Submission Received'
-            message = form.cleaned_data['message']
-            email = form.cleaned_data['email']
-            name = form.cleaned_data['name']
-            msg = 'Name : ' + name + '\nEmail : ' + email + '\nMessage : ' + message
-            if c.image:
-                msg = msg + '\nImage: https://www.yctees.in/' + c.image.url
-            try:
-                mail = EmailMessage(subject, msg, settings.DEFAULT_FROM_EMAIL, [settings.CONTACT_EMAIL])
-                mail.send()
-                return redirect('products:list_products')
-            except:
-                messages.error(request, 'Attachment is too big or corrupt. Please try again.')
-                return render(request, 'contact_us.html', {'form': form})
+            # subject = 'Submission Received'
+            # message = form.cleaned_data['message']
+            # email = form.cleaned_data['email']
+            # name = form.cleaned_data['name']
+            # msg = 'Name : ' + name + '\nEmail : ' + email + '\nMessage : ' + message
+            # if c.image:
+            #     msg = msg + '\nImage: https://www.yctees.in/' + c.image.url
+            # try:
+            #     mail = EmailMessage(subject, msg, settings.DEFAULT_FROM_EMAIL, [settings.CONTACT_EMAIL])
+            #     mail.send()
+            #     return redirect('products:list_products')
+            # except:
+            #     messages.error(request, 'Attachment is too big or corrupt. Please try again.')
+            #     return render(request, 'contact_us.html', {'form': form})
         context = {
             'form':form
         }

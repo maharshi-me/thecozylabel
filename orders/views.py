@@ -119,17 +119,17 @@ def handlerequest(request):
             
             
             # Generate pdf Invoice
-            html = render_to_string('pdf.html', {'order':order})
-            out = BytesIO()
-            stylesheets=[weasyprint.CSS(settings.STATIC_ROOT +'/css/pdf.css')]
-            weasyprint.HTML(string=html).write_pdf(out, stylesheets=stylesheets)
-            subject = 'New order from The Cozy Label'
-            email_message = 'Please find the attachment of  the invoice for your recent order'
-            from_email = settings.DEFAULT_FROM_EMAIL
-            to = order.customer.email
-            email = EmailMessage(subject,email_message, from_email, [to])
-            email.attach('invoice.pdf',out.getvalue(), 'application/pdf')
-            email.send()
+            # html = render_to_string('pdf.html', {'order':order})
+            # out = BytesIO()
+            # stylesheets=[weasyprint.CSS(settings.STATIC_ROOT +'/css/pdf.css')]
+            # weasyprint.HTML(string=html).write_pdf(out, stylesheets=stylesheets)
+            # subject = 'New order from The Cozy Label'
+            # email_message = 'Please find the attachment of  the invoice for your recent order'
+            # from_email = settings.DEFAULT_FROM_EMAIL
+            # to = order.customer.email
+            # email = EmailMessage(subject,email_message, from_email, [to])
+            # email.attach('invoice.pdf',out.getvalue(), 'application/pdf')
+            # email.send()
             messages.success(request, "Order Placed Successfully.")
         else:
             messages.error(request, "Something went wrong. Please try again")
