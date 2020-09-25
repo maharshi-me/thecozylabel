@@ -9,34 +9,13 @@
 <div class="container mt-5">
 
   <!--Navbar-->
-    <nav class="navbar navbar-expand-lg navbar-dark mdb-color lighten-3 mb-5 mt-5">
-
-
-      <!-- Collapse button -->
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav2"
-      aria-controls="basicExampleNav2" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="basicExampleNav2">
-
-      <ul class="navbar-nav mr-auto">
-        {% for category in categories %}
-            <div class="dropdown">
-              <a href="?c={{category}}" class="dropbtn">{{category}}</a>
-            </div>
-        {% endfor %}
-      </ul>
-
-      
-      
-    </div>
-    <!-- Collapsible content -->
-
-  </nav>
+    
   <!--/.Navbar-->
+    <h2>{{title}}</h2>
+    <hr>
+    <br>
 
+  
 
   
   <!--Section: Products v.3-->
@@ -62,25 +41,21 @@
           <div class="card-body card-body-cascade text-center pb-3">
             <!-- Title -->
             <h5 class="card-title mb-1">
-              <strong>
                 <h6 class="card-title mb-1 title-font">
-                  <strong>
-                  <a href="{% url 'products:product_detail' product.id %}">{{product}}</a>
-                  </strong>
+                  <a href="{% url 'products:product_detail' product.id %}" class='link-text'>{{product}}</a>
                 </h6>
-              </strong>
             </h5>
             
             
               <span class="font-weight-bold">
                 {% if product.discount_price %}
-                    <span class="money"><strong>₹ {{product.discount_price|floatformat:0}}</strong></span>
+                    <span class="money">₹ {{product.discount_price|floatformat:0}}</span>
                     
                 
-                    <span class='money-strike'><s>₹ {{product.price|floatformat:0}}</s></span>
+                    <span class='money-strike'>₹<s> {{product.price|floatformat:0}}</s></span>
                     
                     {% else %}
-                    <span class="money"><strong>₹ {{product.price|floatformat:0}}</strong></span>
+                    <span class="money">₹ {{product.price|floatformat:0}}</span>
            
                     {% endif %}
               </span>
@@ -98,7 +73,7 @@
     {% if is_paginated %}
     <!--Pagination-->
     <nav class="d-flex justify-content-center wow fadeIn">
-      <ul class="pagination pg-blue">
+      <ul class="pagination page-blue">
 
         <!--Arrow left-->
         {% if page_obj.has_previous %}
@@ -111,7 +86,7 @@
         {% endif %}
 
         <li class="page-item active">
-          <a class="page-link" href="?page={{page_obj.number}}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">{{page_obj.number}}
+          <a class="page-link" style="background-color: black;" href="?page={{page_obj.number}}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">{{page_obj.number}}
             <span class="sr-only">(current)</span>
 
           </a>
@@ -134,3 +109,4 @@
 <!--Main layout-->
 
 {% endblock content %}
+N

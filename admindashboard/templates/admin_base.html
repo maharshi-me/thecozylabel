@@ -19,6 +19,7 @@
   <!-- Your custom styles (optional) -->
   <link href="{% static 'css/style.min.css' %}" rel="stylesheet">
   <link href="{% static 'css/my-style.css' %}" rel="stylesheet">
+  <link href="{% static 'css/style1.css' %}" rel="stylesheet">
 
   <style type="text/css">
     html,
@@ -65,7 +66,7 @@
 <body>
   {% include "includes/admin_navbar.html" %}
   
-  <div class="mt-5 pt-4">
+  <div class="mt-5" style="padding-top: 100px;">
   </div>
 
 
@@ -75,9 +76,6 @@
   
   <!--Main layout-->
 {% endblock content %}
-  <!--Footer-->
-{% include "includes/footer.html" %}
-  <!--/.Footer-->
       
   <!-- SCRIPTS -->
   <!-- JQuery -->

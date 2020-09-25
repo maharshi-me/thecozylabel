@@ -9,8 +9,7 @@ from multiselectfield import MultiSelectField
 # Create your models here.
 user = settings.AUTH_USER_MODEL
 LABEL_CHOICES = (
-    ('N', 'New Arrivals (Show on front page)'),
-    ('R', 'Donot show on front page')
+    ('N', 'New Arrivals (Show on Top)'),
 )
 
 SIZE_CHOICES = (
@@ -38,15 +37,17 @@ class Item(models.Model):
     image_2 = models.FileField(upload_to='item_images', blank=True)
     image_3 = models.FileField(upload_to='item_images', blank=True)
     image_4 = models.FileField(upload_to='item_images', blank=True)
+    is_in_stock = models.BooleanField(default=True)
     description = models.TextField(blank=True, null=True)
     price = models.FloatField()
     discount_price = models.FloatField(blank=True, null=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='category', blank=True)
     label = models.CharField(choices=LABEL_CHOICES, max_length=1, blank=True)
     sizes = MultiSelectField(choices=SIZE_CHOICES, max_length=100)
-    style = models.CharField(max_length=1000, blank=True, null=True)
-    fabric = models.CharField(max_length=1000, blank=True, null=True)
-    policy = models.TextField(blank=True, null=True)
+    stretchability = models.CharField(max_length=1000, blank=True, null=True)
+    material = models.CharField(max_length=1000, blank=True, null=True)
+    color = models.CharField(max_length=1000, blank=True, null=True)
+    disclaimer = models.TextField(blank=True, null=True)
 
 
     def __str__(self):

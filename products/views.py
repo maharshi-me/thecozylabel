@@ -37,9 +37,19 @@ class ProductsList(ListView):
     def get_context_data(self, **kwargs):
         context = super(ProductsList, self).get_context_data(**kwargs)
         context['carousels'] = Carousel.objects.all()
+        context['p1'] = Item.objects.all().filter(category__name='Tops & Blouses')[:8]
+        context['p1_pk'] = Category.objects.get(name="Tops & Blouses").pk
+        context['p2'] = Item.objects.all().filter(category__name='Dresses')[:8]
+        context['p2_pk'] = Category.objects.get(name="Dresses").pk
+        context['p3'] = Item.objects.all().filter(category__name='Jumpsuits')[:8]
+        context['p3_pk'] = Category.objects.get(name="Jumpsuits").pk
+        context['p4'] = Item.objects.all().filter(category__name="Co ord's")[:8]
+        context['p4_pk'] = Category.objects.get(name="Co ord's").pk
+        context['p5'] = Item.objects.all().filter(category__name='Bottoms')[:8]
+        context['p5_pk'] = Category.objects.get(name="Bottoms").pk
+        context['p6'] = Item.objects.all().filter(category__name='Winter')[:8]
+        context['p6_pk'] = Category.objects.get(name="Winter").pk
         return context
-
-
 
 
 
@@ -48,6 +58,7 @@ class All_ProductsList(ListView):
     model = Item
     paginate_by = 20
     context_object_name = 'products'
+    title = 'All'
 
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_superuser:
@@ -60,19 +71,26 @@ class All_ProductsList(ListView):
         queryset = super(All_ProductsList, self).get_queryset()
         c = self.request.GET.get('c',None)
         if c is not None:
-            queryset = queryset.filter(category__name=c)
+            queryset = queryset.filter(category__pk=c)
+            self.title = Category.objects.get(pk=c).name
         name = self.request.GET.get('name',None)
         if name is not None:
             queryset1 = queryset.filter(title__icontains=name)
             queryset2 = queryset.filter(category__name__icontains=name)
             queryset4 = queryset.filter(description__icontains=name)
             queryset = (queryset1 | queryset2 | queryset4).distinct()
+            self.title = "Results for '"+ name +"'"
+        label = self.request.GET.get('l',None)
+        if label is not None:
+            queryset = queryset.filter(label=label)
+            self.title = 'New Arrivals'
         return queryset
 
     def get_context_data(self, **kwargs):
         context = super(All_ProductsList, self).get_context_data(**kwargs)
         context['categories'] = Category.objects.all()
         context['carousels'] = Carousel.objects.all()
+        context['title'] = self.title
         return context
 
 
@@ -99,6 +117,9 @@ class ProductDetail(View):
 class AddToCart(LoginRequiredMixin, View):
     def post(self, request, *args, **kwargs):
         item = Item.objects.get(pk=(request.POST.get('pk')))
+        if not item.is_in_stock:
+            messages.error(request, 'Item Out of stock')
+            return redirect('products:product_detail', pk=item.pk)
         size = request.POST.get('size',None)
         quantity = int(request.POST.get('quantity','1'))
         if size is None:
@@ -119,6 +140,11 @@ class AddToCart(LoginRequiredMixin, View):
 class IncrementCart(LoginRequiredMixin, View):
     def get(self, request, pk, *args, **kwargs):
         cart_item = Cartitem.objects.get(pk=pk)
+        if not cart_item.item.is_in_stock:
+            cart_item.delete()
+            messages.error(request, 'Item Out of stock')
+            return redirect('products:cart')
+        
         cart_item.increment()
         cart_item.save()
         messages.info(request, 'Item has been added to your cart')
@@ -127,6 +153,10 @@ class IncrementCart(LoginRequiredMixin, View):
 class DecrementCart(LoginRequiredMixin, View):
     def get(self, request, pk, *args, **kwargs):
         cart_item = Cartitem.objects.get(pk=pk)
+        if not cart_item.item.is_in_stock:
+            cart_item.delete()
+            messages.error(request, 'Item Out of stock')
+            return redirect('products:cart')
         cart_item.decrement()
         cart_item.save()
         if cart_item.quantity == 0:

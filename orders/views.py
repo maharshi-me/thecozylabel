@@ -24,8 +24,14 @@ class Checkout(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         user_cart = Cart.objects.get(user=request.user)
         shipping = Shipping_Details.objects.filter(user=request.user).last()
+        for cart_item in user_cart.cartitem_set.all():
+            if not cart_item.item.is_in_stock:
+                cart_item.delete()
+        if len(user_cart.cartitem_set.all()) == 0:
+            messages.error(request, 'Item Out of stock')
+            return redirect('products:cart')
         data = {
-            'cart' : user_cart,
+            'cart' : Cart.objects.get(user=request.user),
             'items' : user_cart.cartitem_set.all(),
             'shipping':shipping
 
@@ -52,6 +58,19 @@ class Checkout(LoginRequiredMixin, View):
             order_id = Order.objects.create_new_id(),
         )
 
+
+        user_cart = Cart.objects.get(user=request.user)
+        for cart_item in user_cart.cartitem_set.all():
+            if not cart_item.item.is_in_stock:
+                cart_item.delete()
+        user_cart = Cart.objects.get(user=request.user)
+        if len(user_cart.cartitem_set.all()) == 0:
+            messages.error(request, 'Item Out of stock')
+            return redirect('products:cart')
+        user_cart = Cart.objects.get(user=request.user)
+        for cart_item in user_cart.cartitem_set.all():
+            if not cart_item.item.is_in_stock:
+                cart_item.delete()
         user_cart = Cart.objects.get(user=request.user)
 
         for cart_item in user_cart.cartitem_set.all():
@@ -71,6 +90,15 @@ class Checkout(LoginRequiredMixin, View):
 class ConfirmOrder(LoginRequiredMixin, CustomerRequiredMixin, ActiveOrderRequiredMixin ,View):
     def get(self, request, pk, *args, **kwargs):
         order = Order.objects.get(pk=pk)
+        if len(order.orderitem_set.all()) == 0:
+            order.delete()
+            messages.error(request, 'Item Out of stock')
+            return redirect('products:cart')
+        for oitem in order.orderitem_set.all():
+            if not oitem.item.is_in_stock:
+                order.delete()
+                messages.error(request, 'Item Out of stock')
+                return redirect('products:cart')
         data = {
             'order':order
         }
@@ -78,6 +106,15 @@ class ConfirmOrder(LoginRequiredMixin, CustomerRequiredMixin, ActiveOrderRequire
     
     def post(self, request, pk, *args, **kwargs):
         order = Order.objects.get(pk=pk)
+        if len(order.orderitem_set.all()) == 0:
+            order.delete()
+            messages.error(request, 'Item Out of stock')
+            return redirect('products:cart')
+        for oitem in order.orderitem_set.all():
+            if not oitem.item.is_in_stock:
+                order.delete()
+                messages.error(request, 'Item Out of stock')
+                return redirect('products:cart')
         order.confirm=True
         order.save()
         user_cart = Cart.objects.get(user=request.user)

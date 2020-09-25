@@ -15,23 +15,28 @@
 
   <!--Main layout-->
   <main class="mt-3">
-    <div class="container mt-5">
+    <div class="mt-5">
 
       <!--Grid row-->
-      <div class="row wow fadeIn">
+      <div class="row wow fadeIn mx-5">
 
         <!--Grid column-->
-        <div class="col-md-6 mb-4">
+        <div class="col-lg-6 mb-4">
+          <div class="mb-2 py-5">
 
-        <a href="{{product.image.url}}" data-lightbox="example-set" data-title="{{product.title}}">
-          <img class="card-img-top" src="{{product.image.url}}" alt="item-pic"/>
-        </a>
+            <a href="{{product.image.url}}" data-lightbox="example-set" data-title="{{product.title}}">
+              <img class="card-img-top" style="display: block;
+              margin-left: auto;
+              margin-right: auto;
+              width: 50%;" src="{{product.image.url}}" alt="item-pic"/>
+            </a>
+          </div>
         
             
 
           <div class='row'>
             {% if product.image_1 %}
-            <div class='col-md-4 col-sm-4 col-4'>
+            <div class='col-md-3 col-sm-3 col-3'>
               <div class="product-img zoom">
                 <a href="{{product.image_1.url}}" data-lightbox="example-set" data-title="{{product.title}}">
                   <img class="card-img-top" src="{{product.image_1.url}}" alt="item-pic"/>
@@ -40,7 +45,7 @@
             </div>
             {% endif %}
             {% if product.image_2 %}
-            <div class='col-md-4 col-sm-4 col-4'>
+            <div class='col-md-3 col-sm-3 col-3'>
               <div class="product-img zoom">
                 <a href="{{product.image_2.url}}" data-lightbox="example-set" data-title="{{product.title}}">
                   <img class="card-img-top" src="{{product.image_2.url}}" alt="item-pic"/>
@@ -49,7 +54,7 @@
             </div>
             {% endif %}
             {% if product.image_3 %}
-            <div class='col-md-4 col-sm-4 col-4'>
+            <div class='col-md-3 col-sm-3 col-3'>
               <div class="product-img zoom">
                 <a href="{{product.image_3.url}}" data-lightbox="example-set" data-title="{{product.title}}">
                   <img class="card-img-top" src="{{product.image_3.url}}" alt="item-pic"/>
@@ -59,7 +64,7 @@
             {% endif %}
             
             {% if product.image_4 %}
-            <div class='col-md-4 col-sm-4 col-4'>
+            <div class='col-md-3 col-sm-3 col-3'>
               <div class="product-img zoom">
                 <a href="{{product.image_4.url}}" data-lightbox="example-set" data-title="{{product.title}}">
                   <img class="card-img-top" src="{{product.image_4.url}}" alt="item-pic"/>
@@ -75,12 +80,12 @@
         <!--Grid column-->
 
         <!--Grid column-->
-        <div class="col-md-6 mb-4">
+        <div class="col-lg-6 mb-4">
           <div class='row'>
             <div class=''>
 
           <!--Content-->
-              <div class="p-4">
+              <div class="p-4 mb-4">
                 <form action="{% url 'products:add_to_cart' %}" id='form1' method='POST'>
 
                 {% csrf_token %}
@@ -89,26 +94,37 @@
                   <input type='hidden' name='pk' value='{{product.pk}}'>
                   <div class='title-font-d'>
 
-                  {{product.title}}
+                  <b>{{product.title}}</b>
                   </div>
+                  <hr style="position: relative; 
+                  top: 0px; 
+                  border: none; 
+                  height: 1px;
+                  background: black; 
+                  margin-bottom: 15px; ">
 
                   <p class="lead">
                     <span class="font-weight-bold">
                           {% if product.discount_price %}
-                          <span class="money-d"><strong>₹ {{product.discount_price|floatformat:0}}</strong></span>
+                          <span class="money-d">₹ {{product.discount_price|floatformat:0}}</span>
                           
                       
-                          <span class='money-strike-d'><s>₹ {{product.price|floatformat:0}}</s></span>
+                          <span class='money-strike-d'>₹<s> {{product.price|floatformat:0}}</s></span>
 
-                          <span style='color:red;'><small>{{product.get_discount_percentage}} % discount</small></span>
+                          <span style='color:red;'><small>{{product.get_discount_percentage}}% discount</small></span>
                           
                           {% else %}
-                          <span class="money-d"><strong>₹ {{product.price|floatformat:0}}</strong></span>
+                          <span class="money-d">₹ {{product.price|floatformat:0}}</span>
                 
                           {% endif %}
                     </span>
                     <small><br>(Inclusive of all taxes.)</small>
                   </p>
+                  {% if product.is_in_stock %}
+                  <p>In Stock</p>
+                  {% else %}
+                  <p style="color: red;">Out of Stock</p>
+                  {% endif %}
 
                   
                   
@@ -130,18 +146,55 @@
                   </div>
                     
                   <div class='mb-4'>
-                    <input class='form-control' style='width:50px;' type="number" id="qty" name="quantity" min="1" max='99'
+                    <input class='form-control' style='width:50px;' type="number" id="qty" name="quantity" min="1" max='9'
                       value="1" required>
                   </div>
-                  
-                  
 
-
-                  
-                  <button type='submit' class="btn btn-primary btn-md my-0 p">
-                          Add to cart
-                        <i class="fas fa-shopping-cart ml-1"></i>
+                  {% if product.is_in_stock %}
+                  <button type='submit' class="btn btn-dark btn-md mx-0 mb-4">
+                    Add to cart
+                  <i class="fas fa-shopping-cart ml-1"></i>
                   </button>
+                  {% else %}
+                  
+
+                  {% endif %}
+                  
+                  
+
+
+                  
+                  
+
+                  <div>
+                    <h4>Description</h4>
+                    <hr style="position: relative; 
+                  top: 0px; 
+                  border: none; 
+                  height: 1px;
+                  background: black; 
+                  margin-bottom: 15px; ">
+                    <p>{{product.description}}</p>
+                  </div>
+          
+                  <div >
+                    <label class='label-size'>Colour</label>
+                    <p>{{product.color}}</p>
+                  </div>
+                  <div >
+                    <label class='label-size'>Material</label>
+                    <p>{{product.material}}</p>
+                  </div>
+                  <div >
+                    <label class='label-size'>Stretchability</label>
+                    <p>{{product.stretchability}}</p>
+                  </div>
+                  <div >
+                    <label class='label-size'>Disclaimer</label>
+                    <p>{{product.disclaimer}}</p>
+                  </div>
+
+                  
 
                 </form>
 
@@ -156,28 +209,11 @@
         </div>
         <!--Grid column-->
 
-        <div class='container'>
-          <label class='label-size'>Description</label>
-          <p>{{product.description}}</p>
-        </div>
-
-        <div class='container'>
-          <label class='label-size'>Style</label>
-          <p>{{product.style}}</p>
-        </div>
-        <div class='container'>
-          <label class='label-size'>Fabric</label>
-          <p>{{product.fabric}}</p>
-        </div>
-        <div class='container'>
-          <label class='label-size'>Delivery & Return Policy</label>
-          <p>{{product.policy}}</p>
-        </div>
+       
 
       </div>
       <!--Grid row-->
 
-      <hr>
 
     </div>
   </main>

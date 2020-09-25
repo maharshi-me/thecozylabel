@@ -1,9 +1,18 @@
-
+{% load static %}
+<style>
+  .white-bg{
+    background-color: white;
+    color: black;
+  }
+</style>
   <!-- Footer -->
-<footer class="page-footer font-small mt-4">
+
+
+<footer class="font-small mt-4">
 
   <!-- Footer Links -->
   <div class="container text-center text-md-left">
+    <hr>
 
     <!-- Grid row -->
     <div class="row">
@@ -12,18 +21,16 @@
       <div class="col-md-3 mx-auto">
 
         <!-- Links -->
-        <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Connect With Us</h5>
-
-        <ul class="list-unstyled">
+        <h5 class="mt-3 footer-head" style="font-weight: 450;">Contact Us</h5>
+        <div class='c2'></div>
+        
+        <ul class="list-unstyled mt-2">
           <li>
-            <a href="#!"><i class="fab fa-2x fa-facebook pr-2"></i>Facebook</a>
+            <p>For any queries or order updates get in touch with our team at:</p>
+            <p>Email: customerservice@alamodelabel.in</p>
+            
           </li><br>
-          <li>
-            <a href="#!"><i class="fab fa-2x fa-instagram pr-2"></i>Instagram</a>
-          </li><br>
-          <li>
-            <a href="#!"><i class="fab fa-2x fa-twitter pr-2"></i>Twitter</a>
-          </li>
+          
         </ul>
 
       </div>
@@ -36,31 +43,32 @@
       <div class="col-md-3 mx-auto">
 
         <!-- Links -->
-        <h5 class="font-weight-bold text-uppercase mt-3 mb-4">The Cozy Label</h5>
+        <h5 class="mt-3 footer-head" style="font-weight: 450;">Quick Links</h5>
+        <div class='c2'></div>
+        <ul class="list-unstyled mt-2">
 
-        <ul class="list-unstyled">
-
-          <li>
-            <a href="{% url 'products:about_us' %}">About Us</a>
+          <li class="mb-2">
+            <a href="{% url 'products:about_us' %}" class='link-text-footer'>About Us</a>
           </li>
 
-          <li>
-            <a href="{% url 'products:contact-us' %}">Contact Us</a>
+          <li class="mb-2">
+            <a href="#" class='link-text-footer'>How to buy</a>
+          </li>
+          <li class="mb-2">
+            <a href="#" class='link-text-footer'>Size Guide</a>
+          </li>
+          <li class="mb-2">
+            <a href="#" class='link-text-footer'>Shipping Policy</a>
           </li>
 
-          <li>
-            <a href="{% url 'products:faq' %}">FAQ</a>
+          <li class="mb-2">
+            <a href="#" class='link-text-footer'>Exchange and Returns</a>
           </li>
-
-          <li>
-            <a href="{% url 'products:return_refund' %}">Cancellation and Refund policy</a>
+          <li class="mb-2">
+            <a href="#" class='link-text-footer'>Privacy Policy</a>
           </li>
-
-          <li>
-            <a href="{% url 'products:privacy_policy' %}">Privacy Policy</a>
-          </li>
-          <li>
-            <a href="{% url 'products:terms_condition' %}">Terms and Conditions</a>
+          <li class="mb-2">
+            <a href="#" class='link-text-footer'>Terms and Conditions</a>
           </li>
         </ul>
 
@@ -72,23 +80,18 @@
        <!-- Grid column -->
       <div class="col-md-3 mx-auto">
 
-      <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Address</h5>
-
-
-      <ul class="list-unstyled">
+        <h5 class="mt-3 footer-head" style="font-weight: 450;">News letters</h5>
+        <div class='c2'></div>
+        
+        <ul class="list-unstyled mt-2">
           <li>
-            <p>The Cozy Label</p>
-          </li>
-          <li>
-            <p>Address line</p>
-          </li>
-          <li>
-            <p>address line</p>
-          </li>
+            <p>Subscribe to receive updates, access to exclusive deals, and more.</p>
+            <form>
+              <input type='text' />
+              <button type="submit" class='btn btn-sm btn-dark ml-0 mt-2'>Submit</button>
+            </form>
+          </li><br>
           
-          <li>
-            <p><a href="whatsapp://send?phone=+919999999999"><i class="fab fa-2x fa-whatsapp pr-1"></i>+91-99999-99999</a></p>
-          </li>
         </ul>
 
 
@@ -99,13 +102,22 @@
 
     </div>
     <!-- Grid row -->
+    <hr>
+    
 
   </div>
   <!-- Footer Links -->
 
+
   <!-- Copyright -->
-  <div class="footer-copyright text-center py-3">© 2020 Copyright:
-    <a href="#"> The Cozy Label</a>.
+  <div class="text-center white-bg">
+    
+    <div class='olo mb-2'>
+      <img src="{% static 'images/logo.png'%}">
+     
+  </div><p>© 2020 Copyright:
+    ThecozyLabel Pvt Ltd. All Rights Reserved</p>
+     <p>Made by <b>AvasyuTech</b></p>
   </div>
 
 </footer>
