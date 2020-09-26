@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from orders.models import Order
-from products.models import Item, Carousel, Category
+from products.models import Item, Category
 from ecommerce.mixins import SuperuserRequiredMixin
 from django.views.generic import View, CreateView, ListView, UpdateView, DeleteView
-from .forms import ItemForm, CategoryForm, CarouselForm
+from .forms import ItemForm, CategoryForm
 from .models import Contact
 from django.contrib import messages
 # Create your views here.
@@ -63,36 +63,10 @@ class ItemUpdate(SuperuserRequiredMixin, View):
 
 
 
-class CarouselCreate(SuperuserRequiredMixin, View):
-    def get(self, request, *args, **kwargs):
-        context = {
-            'form':CarouselForm,
-        }
-        return render(request, 'admin_carousel_create.html', context)
-
-    def post(self, request, *args, **kwargs):
-        form = CarouselForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            context = {
-                'form':CarouselForm,
-            }
-            return redirect('a:carousel-list')
-        context = {
-            'form':CarouselForm(request.POST, request.FILES),
-        }
-        return render(request, 'admin_carousel_create.html', context)
-
 class ItemsDisplay(SuperuserRequiredMixin, ListView):
     model = Item
     template_name = 'admin_item_list.html'
     context_object_name = 'items'
-
-class CarouselsDisplay(SuperuserRequiredMixin, ListView):
-    model = Carousel
-    template_name = 'admin_carousel_list.html'
-    context_object_name = 'carousels'
-    
 
 
 
@@ -105,19 +79,6 @@ class OrdersDelete(SuperuserRequiredMixin, DeleteView):
     model = Order
     template_name = 'admin_order_delete.html'
     success_url = reverse_lazy('a:dashboard')
-
-
-class CarouselDelete(SuperuserRequiredMixin, DeleteView):
-    model = Carousel
-    template_name = 'admin_carousel_delete.html'
-    success_url = reverse_lazy('a:carousel-list')
-
-
-
-class CarouselUpdate(SuperuserRequiredMixin, UpdateView):
-    model = Carousel
-    template_name = 'admin_carousel_update.html'
-    fields = ['image']
 
 
 

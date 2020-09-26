@@ -4,32 +4,27 @@
 
 {% block content %}
 <!--Carousel Wrapper-->
-{% if carousels %}
-<div id="carousel-example-1z" class="carousel slide carousel-fade mt-3" style='height:90vh;' data-ride="carousel">
+
+<div id="carousel-example-1z" class="carousel slide carousel-fade mt-3 mobile-hider" style='height:90vh;' data-ride="carousel">
 
   <!--Indicators-->
-  <ol class="carousel-indicators">
-  {% for carousel in carousels %}
-  <li data-target="#carousel-example-1z" data-slide-to="{{forloop.counter}} {% if forloop.counter == 1 %}class="active"{% endif %}"></li>
-  {% endfor %}
-  </ol>
+  
   <!--/.Indicators-->
 
   <!--Slides-->
   <div class="carousel-inner" role="listbox">
     
 
-    {% for carousel in carousels %}
-
-    <div class="carousel-item {% if forloop.counter == 1 %}active{% endif %} " style='width:100%;'>
-      <div class="view" style="background-image: url('{{carousel.image.url}}'); background-repeat: no-repeat; background-size:cover; background-position: center center;">
+    <div class="carousel-item active" style='width:100%;'>
+      <div class="view" style="background-image: url('{% static 'images/o1.webp' %}'); background-repeat: no-repeat; background-size:cover; background-position: center center;">
         
       </div>
-    </div>    
-    
-    {% endfor %}
-
-
+    </div>
+    <div class="carousel-item" style='width:100%;'>
+      <div class="view" style="background-image: url('{% static 'images/ho.webp' %}'); background-repeat: no-repeat; background-size:cover; background-position: center center;">
+        
+      </div>
+    </div>
   </div>
   <!--/.Slides-->
 
@@ -45,8 +40,40 @@
   <!--/.Controls-->
 
 </div>
-{% endif %}
 <!--/.Carousel Wrapper-->
+
+
+
+
+<div id="carousel-example-1z" class="carousel slide carousel-fade mt-3 mobile-viewer" style='height:90vh;' data-ride="carousel">
+
+  <!--Indicators-->
+  
+  <!--/.Indicators-->
+
+  <!--Slides-->
+  <div class="carousel-inner" role="listbox">
+    
+
+    <div class="carousel-item active" style='width:100%;'>
+      <div class="view" style="background-image: url('{% static 'images/the.webp' %}'); background-repeat: no-repeat; background-size:cover; background-position: center center;">
+        
+      </div>
+    </div>
+  </div>
+  <!--/.Slides-->
+
+  <!--Controls-->
+  <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <!--/.Controls-->
+
+</div>
+<!--/.Carousel Wrapper-->
+
+
 
 
 

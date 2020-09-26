@@ -49,10 +49,10 @@
         </div>
       </li>
       <li class="nav-item">
-        <a href="#" type="button" class="btn btn-flat" style="margin: 0; box-shadow: unset; ">About Us</a>
+        <a href="{% url 'products:about_us' %}" type="button" class="btn btn-flat" style="margin: 0; box-shadow: unset; ">About Us</a>
       </li>
       <li class="nav-item">
-        <a href="#" type="button" class="btn btn-flat" style="margin: 0; box-shadow: unset; ">Reach Us</a>
+        <a href="{% url 'products:contact-us' %}" type="button" class="btn btn-flat" style="margin: 0; box-shadow: unset; ">Reach Us</a>
       </li>
       {% if request.user.is_authenticated %}
 
@@ -135,10 +135,10 @@
     </li>
     
     <li class="nav-item">
-      <a href="#" type="button" class="btn btn-flat" style="margin: 0; box-shadow: unset; ">About Us</a>
+      <a href="{% url 'products:about_us' %}" type="button" class="btn btn-flat" style="margin: 0; box-shadow: unset; ">About Us</a>
     </li>
     <li class="nav-item">
-      <a href="#" type="button" class="btn btn-flat" style="margin: 0; box-shadow: unset; ">Reach Us</a>
+      <a href="{% url 'products:contact-us' %}" type="button" class="btn btn-flat" style="margin: 0; box-shadow: unset; ">Reach Us</a>
     </li>
 
 

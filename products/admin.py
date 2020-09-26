@@ -1,4 +1,3 @@
 from django.contrib import admin
-from . models import Faq, Category
-admin.site.register(Faq)
+from . models import Category
 admin.site.register(Category)

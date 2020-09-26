@@ -119,24 +119,6 @@ class Cartitem(models.Model):
         self.quantity = self.quantity - 1
 
 
-class Carousel(models.Model):
-    image = models.FileField(upload_to='carousel_images')
-
-    def get_absolute_url(self):
-        return reverse("a:carousel-list")
-
-
-class Faq(models.Model):
-    question = models.CharField(max_length=500)
-    answer = models.TextField()
-
-    def __str__(self):
-        return self.question
-
-
-
-
-
 
 
 

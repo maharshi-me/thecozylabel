@@ -1,5 +1,5 @@
 from django import forms
-from products.models import Item, Category, Carousel
+from products.models import Item, Category
 from .models import Contact
 
 class ItemForm(forms.ModelForm):
@@ -12,10 +12,6 @@ class CategoryForm(forms.ModelForm):
         model = Category
         fields = ['name']
 
-class CarouselForm(forms.ModelForm):
-    class Meta:
-        model = Carousel
-        fields = ['image']
 
 class ContactForm(forms.ModelForm):
     class Meta:

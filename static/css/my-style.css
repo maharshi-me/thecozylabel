@@ -328,6 +328,12 @@ body{
     .un-hider{
         display: none;
     }
+    .mobile-viewer{
+        display: none;
+    }
+    .mobile-hider{
+        display: block;
+    }
 
     @media (max-width: 767px) {
         .nav-hider{
@@ -335,5 +341,11 @@ body{
         }
         .un-hider{
             display: flex;
+        }
+        .mobile-viewer{
+            display: block;
+        }
+        .mobile-hider{
+            display: none;
         }
     }

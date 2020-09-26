@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from . models import Item, Category, Cart, Cartitem, Carousel, Faq
+from . models import Item, Category, Cart, Cartitem
 from django.utils import timezone
 from django.contrib import messages
 from django.shortcuts import get_object_or_404, redirect
@@ -36,7 +36,6 @@ class ProductsList(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(ProductsList, self).get_context_data(**kwargs)
-        context['carousels'] = Carousel.objects.all()
         context['p1'] = Item.objects.all().filter(category__name='Tops & Blouses')[:8]
         context['p1_pk'] = Category.objects.get(name="Tops & Blouses").pk
         context['p2'] = Item.objects.all().filter(category__name='Dresses')[:8]
@@ -89,7 +88,6 @@ class All_ProductsList(ListView):
     def get_context_data(self, **kwargs):
         context = super(All_ProductsList, self).get_context_data(**kwargs)
         context['categories'] = Category.objects.all()
-        context['carousels'] = Carousel.objects.all()
         context['title'] = self.title
         return context
 
@@ -210,10 +208,6 @@ def Terms_Condition(request):
 def Privacy_Policy(request):
     return render(request, 'privacy_policy.html' )
 
-
-def faq(request):
-    faqs = Faq.objects.all()
-    return render(request, 'faq.html', {'faqs':faqs})
 
 
 def about_us(request):
