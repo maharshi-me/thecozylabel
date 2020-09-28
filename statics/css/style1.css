@@ -484,6 +484,7 @@ margin-top: 6vh;
             height: 0.4vh;
             background-color: black;
             margin-top: 1vh;
+            text-align: center;
             
         }
         .foot2 > p{
@@ -513,6 +514,7 @@ margin-top: 6vh;
             height: 0.4vh;
             background-color: black;
             margin-top: 1vh;
+            text-align: center;
             
         }
         .foot3 > p{
@@ -829,7 +831,6 @@ margin-top: 6vh;
 }
 @media (max-width: 666px){
     .about3 > img{
-        height: 50vh;
         margin-top: 6vh;
         border: 2vh solid rgb(247, 247, 247);
     }

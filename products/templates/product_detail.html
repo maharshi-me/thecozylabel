@@ -14,21 +14,24 @@
 </style>
 
   <!--Main layout-->
-  <main class="mt-3">
-    <div class="mt-5">
-
+  <main class="mt-5">
+    <div class="mt-5 pt-3">
+      
       <!--Grid row-->
       <div class="row wow fadeIn mx-5">
+        
 
         <!--Grid column-->
         <div class="col-lg-6 mb-4">
+          <a class="link-text mx-2" href="/"><b>Home</b></a>> <a class="link-text" href="/all_product/?c={{product.category.pk}}"><b>{{product.category.name}}</b></a> > {{product.title}}
           <div class="mb-2 py-5">
+            
 
             <a href="{{product.image.url}}" data-lightbox="example-set" data-title="{{product.title}}">
               <img class="card-img-top" style="display: block;
               margin-left: auto;
               margin-right: auto;
-              width: 50%;" src="{{product.image.url}}" alt="item-pic"/>
+              width: 70%;" src="{{product.image.url}}" alt="item-pic"/>
             </a>
           </div>
         
@@ -82,7 +85,7 @@
         <!--Grid column-->
         <div class="col-lg-6 mb-4">
           <div class='row'>
-            <div class=''>
+            <div class='py-5'>
 
           <!--Content-->
               <div class="p-4 mb-4">
@@ -92,16 +95,16 @@
 
 
                   <input type='hidden' name='pk' value='{{product.pk}}'>
-                  <div class='title-font-d'>
+                  <div class='title-font-d pb-2'>
 
                   <b>{{product.title}}</b>
                   </div>
-                  <hr style="position: relative; 
+                  <!-- <hr style="position: relative; 
                   top: 0px; 
                   border: none; 
                   height: 1px;
                   background: black; 
-                  margin-bottom: 15px; ">
+                  margin-bottom: 15px; "> -->
 
                   <p class="lead">
                     <span class="font-weight-bold">
@@ -168,12 +171,12 @@
 
                   <div>
                     <h4>Description</h4>
-                    <hr style="position: relative; 
+                    <!-- <hr style="position: relative; 
                   top: 0px; 
                   border: none; 
                   height: 1px;
                   background: black; 
-                  margin-bottom: 15px; ">
+                  margin-bottom: 15px; "> -->
                     <p>{{product.description}}</p>
                   </div>
           

@@ -36,18 +36,12 @@ class ProductsList(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(ProductsList, self).get_context_data(**kwargs)
-        context['p1'] = Item.objects.all().filter(category__name='Tops & Blouses')[:8]
-        context['p1_pk'] = Category.objects.get(name="Tops & Blouses").pk
-        context['p2'] = Item.objects.all().filter(category__name='Dresses')[:8]
-        context['p2_pk'] = Category.objects.get(name="Dresses").pk
-        context['p3'] = Item.objects.all().filter(category__name='Jumpsuits')[:8]
-        context['p3_pk'] = Category.objects.get(name="Jumpsuits").pk
-        context['p4'] = Item.objects.all().filter(category__name="Co ord's")[:8]
-        context['p4_pk'] = Category.objects.get(name="Co ord's").pk
-        context['p5'] = Item.objects.all().filter(category__name='Bottoms')[:8]
-        context['p5_pk'] = Category.objects.get(name="Bottoms").pk
-        context['p6'] = Item.objects.all().filter(category__name='Winter')[:8]
-        context['p6_pk'] = Category.objects.get(name="Winter").pk
+        context['p1'] = Category.objects.get(name="Tops & Blouses")
+        context['p2'] = Category.objects.get(name="Dresses")
+        context['p3'] = Category.objects.get(name="Jumpsuits")
+        context['p4'] = Category.objects.get(name="Co ord's")
+        context['p5'] = Category.objects.get(name="Bottoms")
+        context['p6'] = Category.objects.get(name="Winter")
         return context
 
 

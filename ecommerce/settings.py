@@ -184,13 +184,12 @@ AUTH_USER_MODEL = 'users.CustomUser'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-ADMIN_NUMBER = '6302523720'
 
 
 # Paytm Settings
 MERCHANT_KEY = '!NU35!Av1e7L78Eu'
 MID = 'GllVbE25290103554044'
-CALLBACK_URL = 'http://127.0.0.1:8000/orders/handlerequest/'
+CALLBACK_URL = 'https://maharshi.pythonanywhere.com/orders/handlerequest/'
 WEBSITE = 'WEBSTAGING'
 
 try:

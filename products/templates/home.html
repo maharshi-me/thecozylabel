@@ -80,11 +80,133 @@
 
 <!--Main layout-->
 <main>
+<div class="container-fluid">
+    <section class="text-center mb-4 mt-5">
+    <div class="row wow fadeIn">
+          <!-- Grid column -->
+      <div class="col-lg-4 col-md-4 col-sm-6 col-6 mb-4">
+        <!-- Card -->
+        <div class="card-cascade narrower card-ecommerce">
+          <!-- Card image -->
+          <div class="view overlay product-img zoom">
+            <img src="{% static 'images/2S.jpg' %}" class="card-img-top"
+              alt="sample photo">
+            <a href="/all_product/?c={{p1.pk}}">
+              <div class="mask rgba-white-slight"></div>
+            </a>
+          </div>
+          <!-- Card image -->
+          <!-- Card content -->
+          
+        </div>
+        <!-- Card -->
+      </div>
+      <!-- Grid column -->
+
+      <div class="col-lg-4 col-md-4 col-sm-6 col-6 mb-4">
+        <!-- Card -->
+        <div class="card-cascade narrower card-ecommerce">
+          <!-- Card image -->
+          <div class="view overlay product-img zoom">
+            <img src="{% static 'images/4S.jpg' %}" class="card-img-top"
+              alt="sample photo">
+            <a href="/all_product/?c={{p2.pk}}">
+              <div class="mask rgba-white-slight"></div>
+            </a>
+          </div>
+          <!-- Card image -->
+          <!-- Card content -->
+          
+        </div>
+        <!-- Card -->
+      </div>
+      <!-- Grid column -->
+
+      <div class="col-lg-4 col-md-4 col-sm-6 col-6 mb-4">
+        <!-- Card -->
+        <div class="card-cascade narrower card-ecommerce">
+          <!-- Card image -->
+          <div class="view overlay product-img zoom">
+            <img src="{% static 'images/3S.webp' %}" class="card-img-top"
+              alt="sample photo">
+            <a href="/all_product/?c={{p3.pk}}">
+              <div class="mask rgba-white-slight"></div>
+            </a>
+          </div>
+          <!-- Card image -->
+          <!-- Card content -->
+          
+        </div>
+        <!-- Card -->
+      </div>
+      <!-- Grid column -->
+
+      <div class="col-lg-4 col-md-4 col-sm-6 col-6 mb-4">
+        <!-- Card -->
+        <div class="card-cascade narrower card-ecommerce">
+          <!-- Card image -->
+          <div class="view overlay product-img zoom">
+            <img src="{% static 'images/6S.jpg' %}" class="card-img-top"
+              alt="sample photo">
+            <a href="/all_product/?c={{p4.pk}}">
+              <div class="mask rgba-white-slight"></div>
+            </a>
+          </div>
+          <!-- Card image -->
+          <!-- Card content -->
+          
+        </div>
+        <!-- Card -->
+      </div>
+      <!-- Grid column -->
+
+
+      <div class="col-lg-4 col-md-4 col-sm-6 col-6 mb-4">
+        <!-- Card -->
+        <div class="card-cascade narrower card-ecommerce">
+          <!-- Card image -->
+          <div class="view overlay product-img zoom">
+            <img src="{% static 'images/5S.webp' %}" class="card-img-top"
+              alt="sample photo">
+            <a href="/all_product/?c={{p5.pk}}">
+              <div class="mask rgba-white-slight"></div>
+            </a>
+          </div>
+          <!-- Card image -->
+          <!-- Card content -->
+          
+        </div>
+        <!-- Card -->
+      </div>
+      <!-- Grid column -->
+
+      <div class="col-lg-4 col-md-4 col-sm-6 col-6 mb-4">
+        <!-- Card -->
+        <div class="card-cascade narrower card-ecommerce">
+          <!-- Card image -->
+          <div class="view overlay product-img zoom">
+            <img src="{% static 'images/7S.jpg' %}" class="card-img-top"
+              alt="sample photo">
+            <a href="/all_product/?c={{p6.pk}}">
+              <div class="mask rgba-white-slight"></div>
+            </a>
+          </div>
+          <!-- Card image -->
+          <!-- Card content -->
+          
+        </div>
+        <!-- Card -->
+      </div>
+      <!-- Grid column -->
+
+  </section>
+</div>
   <div class="container">
 
  
       
   <!--Section: Products v.3-->
+
  
 
 
@@ -97,9 +219,9 @@
       <div class="row wow fadeIn">
           {% for product in products %}
             <!-- Grid column -->
-        <div class="col-lg-3 col-md-4 col-sm-6 col-6 mb-4">
+        <div class="col-lg-3 col-md-4 col-sm-6 col-6 mb-4 px-1 py-0">
           <!-- Card -->
-          <div class="card item-card card-cascade narrower card-ecommerce">
+          <div class="card-cascade narrower card-ecommerce">
             <!-- Card image -->
             <div class="view overlay product-img zoom">
               <img src="{{product.image.url}}" class="card-img-top"
@@ -144,332 +266,6 @@
     <a href="/all_product/?l=N"><button type="button" class="btn btn-outline-dark btn-lg btn-block">See All</button></a>
       <!--Section: Products v.3-->
     
-      <section class="text-center mb-4 mt-4">
-        <h3 class="mt-5">Tops & Blouses</h3>
-        <hr>
-    
-        <!--Grid row-->
-        <div class="row wow fadeIn">
-            {% for product in p1 %}
-              <!-- Grid column -->
-          <div class="col-lg-3 col-md-4 col-sm-6 col-6 mb-4">
-            <!-- Card -->
-            <div class="card item-card card-cascade narrower card-ecommerce">
-              <!-- Card image -->
-              <div class="view overlay product-img zoom">
-                <img src="{{product.image.url}}" class="card-img-top"
-                  alt="sample photo">
-                <a href="{% url 'products:product_detail' product.id %}">
-                  <div class="mask rgba-white-slight"></div>
-                </a>
-              </div>
-              <!-- Card image -->
-              <!-- Card content -->
-              <div class="card-body card-body-cascade text-center pb-3">
-                <!-- Title -->
-                <h5 class="card-title mb-1">
-                    <h6 class="card-title mb-1 title-font">
-                      <a href="{% url 'products:product_detail' product.id %}" class='link-text'>{{product}}</a>
-                    </h6>
-                </h5>
-    
-                
-                  <span class="font-weight-bold">
-                    {% if product.discount_price %}
-                        <span class="money">₹ {{product.discount_price|floatformat:0}}</span>
-                        
-                    
-                        <span class='money-strike'>₹<s> {{product.price|floatformat:0}}</s></span>
-                        
-                        {% else %}
-                        <span class="money">₹ {{product.price|floatformat:0}}</span>
-               
-                        {% endif %}
-                  </span>
-                  
-              </div>
-              <!-- Card content -->
-            </div>
-            <!-- Card -->
-          </div>
-          <!-- Grid column -->
-            {% endfor %}
-    
-      </section>
-      <a href="/all_product/?c={{p1_pk}}"><button type="button" class="btn btn-outline-dark btn-lg btn-block">See All</button></a>
-        <!--Section: Products v.3-->
-        <section class="text-center mb-4 mt-4">
-          <h3 class="mt-5">Dresses</h3>
-          <hr>
-      
-          <!--Grid row-->
-          <div class="row wow fadeIn">
-              {% for product in p2 %}
-                <!-- Grid column -->
-            <div class="col-lg-3 col-md-4 col-sm-6 col-6 mb-4">
-              <!-- Card -->
-              <div class="card item-card card-cascade narrower card-ecommerce">
-                <!-- Card image -->
-                <div class="view overlay product-img zoom">
-                  <img src="{{product.image.url}}" class="card-img-top"
-                    alt="sample photo">
-                  <a href="{% url 'products:product_detail' product.id %}">
-                    <div class="mask rgba-white-slight"></div>
-                  </a>
-                </div>
-                <!-- Card image -->
-                <!-- Card content -->
-                <div class="card-body card-body-cascade text-center pb-3">
-                  <!-- Title -->
-                  <h5 class="card-title mb-1">
-                      <h6 class="card-title mb-1 title-font">
-                        <a href="{% url 'products:product_detail' product.id %}" class='link-text'>{{product}}</a>
-                      </h6>
-                  </h5>
-      
-                  
-                    <span class="font-weight-bold">
-                      {% if product.discount_price %}
-                          <span class="money">₹ {{product.discount_price|floatformat:0}}</span>
-                          
-                      
-                          <span class='money-strike'>₹<s> {{product.price|floatformat:0}}</s></span>
-                          
-                          {% else %}
-                          <span class="money">₹ {{product.price|floatformat:0}}</span>
-                 
-                          {% endif %}
-                    </span>
-                    
-                </div>
-                <!-- Card content -->
-              </div>
-              <!-- Card -->
-            </div>
-            <!-- Grid column -->
-              {% endfor %}
-      
-        </section>
-        <a href="/all_product/?c={{p2_pk}}"><button type="button" class="btn btn-outline-dark btn-lg btn-block">See All</button></a>
-          <!--Section: Products v.3-->
-          <section class="text-center mb-4 mt-4">
-            <h3 class="mt-5">Jumpsuits</h3>
-            <hr>
-        
-            <!--Grid row-->
-            <div class="row wow fadeIn">
-                {% for product in p3 %}
-                  <!-- Grid column -->
-              <div class="col-lg-3 col-md-4 col-sm-6 col-6 mb-4">
-                <!-- Card -->
-                <div class="card item-card card-cascade narrower card-ecommerce">
-                  <!-- Card image -->
-                  <div class="view overlay product-img zoom">
-                    <img src="{{product.image.url}}" class="card-img-top"
-                      alt="sample photo">
-                    <a href="{% url 'products:product_detail' product.id %}">
-                      <div class="mask rgba-white-slight"></div>
-                    </a>
-                  </div>
-                  <!-- Card image -->
-                  <!-- Card content -->
-                  <div class="card-body card-body-cascade text-center pb-3">
-                    <!-- Title -->
-                    <h5 class="card-title mb-1">
-                        <h6 class="card-title mb-1 title-font">
-                          <a href="{% url 'products:product_detail' product.id %}" class='link-text'>{{product}}</a>
-                        </h6>
-                    </h5>
-        
-                    
-                      <span class="font-weight-bold">
-                        {% if product.discount_price %}
-                            <span class="money">₹ {{product.discount_price|floatformat:0}}</span>
-                            
-                        
-                            <span class='money-strike'>₹<s> {{product.price|floatformat:0}}</s></span>
-                            
-                            {% else %}
-                            <span class="money">₹ {{product.price|floatformat:0}}</span>
-                   
-                            {% endif %}
-                      </span>
-                      
-                  </div>
-                  <!-- Card content -->
-                </div>
-                <!-- Card -->
-              </div>
-              <!-- Grid column -->
-                {% endfor %}
-        
-          </section>
-          <a href="/all_product/?c={{p3_pk}}"><button type="button" class="btn btn-outline-dark btn-lg btn-block">See All</button></a>
-            <!--Section: Products v.3-->
-            <section class="text-center mb-4 mt-4">
-              <h3 class="mt-5">Co ord's</h3>
-              <hr>
-          
-              <!--Grid row-->
-              <div class="row wow fadeIn">
-                  {% for product in p4 %}
-                    <!-- Grid column -->
-                <div class="col-lg-3 col-md-4 col-sm-6 col-6 mb-4">
-                  <!-- Card -->
-                  <div class="card item-card card-cascade narrower card-ecommerce">
-                    <!-- Card image -->
-                    <div class="view overlay product-img zoom">
-                      <img src="{{product.image.url}}" class="card-img-top"
-                        alt="sample photo">
-                      <a href="{% url 'products:product_detail' product.id %}">
-                        <div class="mask rgba-white-slight"></div>
-                      </a>
-                    </div>
-                    <!-- Card image -->
-                    <!-- Card content -->
-                    <div class="card-body card-body-cascade text-center pb-3">
-                      <!-- Title -->
-                      <h5 class="card-title mb-1">
-                          <h6 class="card-title mb-1 title-font">
-                            <a href="{% url 'products:product_detail' product.id %}" class='link-text'>{{product}}</a>
-                          </h6>
-                      </h5>
-          
-                      
-                        <span class="font-weight-bold">
-                          {% if product.discount_price %}
-                          <span class="money">₹ {{product.discount_price|floatformat:0}}</span>
-                            
-                        
-                          <span class='money-strike'>₹<s> {{product.price|floatformat:0}}</s></span>
-                          
-                          {% else %}
-                          <span class="money">₹ {{product.price|floatformat:0}}</span>
-                     
-                              {% endif %}
-                        </span>
-                        
-                    </div>
-                    <!-- Card content -->
-                  </div>
-                  <!-- Card -->
-                </div>
-                <!-- Grid column -->
-                  {% endfor %}
-          
-            </section>
-            <a href="/all_product/?c={{p4_pk}}"><button type="button" class="btn btn-outline-dark btn-lg btn-block">See All</button></a>
-              <!--Section: Products v.3-->
-                
-              <section class="text-center mb-4 mt-4">
-                <h3 class="mt-5">Bottoms</h3>
-                <hr>
-            
-                <!--Grid row-->
-                <div class="row wow fadeIn">
-                    {% for product in p5 %}
-                      <!-- Grid column -->
-                  <div class="col-lg-3 col-md-4 col-sm-6 col-6 mb-4">
-                    <!-- Card -->
-                    <div class="card item-card card-cascade narrower card-ecommerce">
-                      <!-- Card image -->
-                      <div class="view overlay product-img zoom">
-                        <img src="{{product.image.url}}" class="card-img-top"
-                          alt="sample photo">
-                        <a href="{% url 'products:product_detail' product.id %}">
-                          <div class="mask rgba-white-slight"></div>
-                        </a>
-                      </div>
-                      <!-- Card image -->
-                      <!-- Card content -->
-                      <div class="card-body card-body-cascade text-center pb-3">
-                        <!-- Title -->
-                        <h5 class="card-title mb-1">
-                          <h6 class="card-title mb-1 title-font">
-                            <a href="{% url 'products:product_detail' product.id %}" class='link-text'>{{product}}</a>
-                          </h6>
-                      </h5>
-            
-                        
-                          <span class="font-weight-bold">
-                            {% if product.discount_price %}
-                            <span class="money">₹ {{product.discount_price|floatformat:0}}</span>
-                            
-                        
-                            <span class='money-strike'>₹<s> {{product.price|floatformat:0}}</s></span>
-                            
-                            {% else %}
-                            <span class="money">₹ {{product.price|floatformat:0}}</span>
-                       
-                                {% endif %}
-                          </span>
-                          
-                      </div>
-                      <!-- Card content -->
-                    </div>
-                    <!-- Card -->
-                  </div>
-                  <!-- Grid column -->
-                    {% endfor %}
-            
-              </section>
-              <a href="/all_product/?c={{p5_pk}}"><button type="button" class="btn btn-outline-dark btn-lg btn-block">See All</button></a>
-                <!--Section: Products v.3-->
-                <section class="text-center mb-4 mt-4">
-                  <h3 class="mt-5">Winter</h3>
-                  <hr>
-              
-                  <!--Grid row-->
-                  <div class="row wow fadeIn">
-                      {% for product in p6 %}
-                        <!-- Grid column -->
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-6 mb-4">
-                      <!-- Card -->
-                      <div class="card item-card card-cascade narrower card-ecommerce">
-                        <!-- Card image -->
-                        <div class="view overlay product-img zoom">
-                          <img src="{{product.image.url}}" class="card-img-top"
-                            alt="sample photo">
-                          <a href="{% url 'products:product_detail' product.id %}">
-                            <div class="mask rgba-white-slight"></div>
-                          </a>
-                        </div>
-                        <!-- Card image -->
-                        <!-- Card content -->
-                        <div class="card-body card-body-cascade text-center pb-3">
-                          <!-- Title -->
-                          <h5 class="card-title mb-1">
-                            <h6 class="card-title mb-1 title-font">
-                              <a href="{% url 'products:product_detail' product.id %}" class='link-text'>{{product}}</a>
-                            </h6>
-                            </h5>
-              
-                          
-                            <span class="font-weight-bold">
-                              {% if product.discount_price %}
-                              <span class="money">₹ {{product.discount_price|floatformat:0}}</span>
-                            
-                        
-                              <span class='money-strike'>₹<s> {{product.price|floatformat:0}}</s></span>
-                              
-                              {% else %}
-                              <span class="money">₹ {{product.price|floatformat:0}}</span>
-                         
-                                  {% endif %}
-                            </span>
-                            
-                        </div>
-                        <!-- Card content -->
-                      </div>
-                      <!-- Card -->
-                    </div>
-                    <!-- Grid column -->
-                      {% endfor %}
-              
-                </section>
-                <a href="/all_product/?c={{p6_pk}}"><button type="button" class="btn btn-outline-dark btn-lg btn-block">See All</button></a>
-                  <!--Section: Products v.3-->
-                      
 
   </div>
   

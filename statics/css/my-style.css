@@ -47,7 +47,6 @@ body{
     overflow-x: auto;
 }
 .product-img{
-    max-height: 250px;
     overflow: hidden;
     margin: 5px;
 }
@@ -111,7 +110,8 @@ body{
 }
 .title-font-d{
     font-family: 'Sen', sans-serif;
-    font-size: 22px;
+    font-size: 24px;
+    letter-spacing: 3px;
     margin-bottom: 5px;
     color: black;
 }
