@@ -210,6 +210,15 @@ def about_us(request):
 def return_refund(request):
     return render(request, 'return_refund.html')
 
+def exchange(request):
+    return render(request, 'exchange.html')
+
+
+
+
+def how_to_buy(request):
+    return render(request, 'how_to_buy.html')
+
 
 
 
