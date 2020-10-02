@@ -214,6 +214,11 @@ def exchange(request):
     return render(request, 'exchange.html')
 
 
+def size(request):
+    return render(request, 'size.html')
+
+
+
 
 
 def how_to_buy(request):

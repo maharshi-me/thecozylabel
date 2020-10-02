@@ -16,7 +16,7 @@ urlpatterns = [
 	path('shipping_policy/', views.return_refund, name = 'return_refund'),
 	path('how_to_buy/', views.how_to_buy, name = 'how_to_buy'),
 	path('exchange/', views.exchange, name = 'exchange'),
-
+	path('size_chart/', views.size, name = 'size'),
 	path('add-to-cart/', views.AddToCart.as_view(), name = 'add_to_cart'),
 	path('increment/<int:pk>/', views.IncrementCart.as_view(), name = 'increment'),
 	path('decrement/<int:pk>/', views.DecrementCart.as_view(), name = 'decrement'),

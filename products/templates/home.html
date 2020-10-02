@@ -5,6 +5,23 @@
 {% block content %}
 
 <!--Carousel Wrapper-->
+<style>
+.container-img {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: xx-large;
+  font-weight: bolder;
+  text-shadow: 1px 1px #000000;
+  color: white;
+}
+</style>
 
 <div id="carousel-example-1z" class="carousel slide carousel-fade mt-3 mobile-hider" style='height:90vh;' data-ride="carousel">
 
@@ -82,7 +99,7 @@
 <!--Main layout-->
 <main>
 
-<div class="container mt-2">
+<div class="my-container mt-2">
     <section class="text-center mb-4 mt-5">
     <div class="row wow fadeIn">
           <!-- Grid column -->
@@ -90,9 +107,10 @@
         <!-- Card -->
         <div class="card-cascade narrower card-ecommerce">
           <!-- Card image -->
-          <div class="view overlay product-img zoom">
-            <img src="{% static 'images/coords.jpg' %}" class="card-img-top"
+          <div class="view overlay product-img zoom container-img">
+            <img src="{% static 'images/tops.jpeg' %}" class="card-img-top"
               alt="sample photo">
+              <div class="centered">TOPS & BLOUSES</div>
 
             <a href="/all_product/?c={{p1.pk}}">
               <div class="mask rgba-white-slight"></div>
@@ -110,9 +128,10 @@
         <!-- Card -->
         <div class="card-cascade narrower card-ecommerce">
           <!-- Card image -->
-          <div class="view overlay product-img zoom">
+          <div class="view overlay product-img zoom container-img">
             <img src="{% static 'images/dresses.webp' %}" class="card-img-top"
               alt="sample photo">
+            <div class="centered">DRESSES</div>
             <a href="/all_product/?c={{p2.pk}}">
               <div class="mask rgba-white-slight"></div>
             </a>
@@ -129,9 +148,10 @@
         <!-- Card -->
         <div class="card-cascade narrower card-ecommerce">
           <!-- Card image -->
-          <div class="view overlay product-img zoom">
+          <div class="view overlay product-img zoom container-img">
             <img src="{% static 'images/jumpsuit.jpg' %}" class="card-img-top"
               alt="sample photo">
+              <div class="centered">JUMPSUITS</div>
             <a href="/all_product/?c={{p3.pk}}">
               <div class="mask rgba-white-slight"></div>
             </a>
@@ -148,9 +168,10 @@
         <!-- Card -->
         <div class="card-cascade narrower card-ecommerce">
           <!-- Card image -->
-          <div class="view overlay product-img zoom">
+          <div class="view overlay product-img zoom container-img">
             <img src="{% static 'images/coords.jpg' %}" class="card-img-top"
               alt="sample photo">
+              <div class="centered">CO ORD'S</div>
             <a href="/all_product/?c={{p4.pk}}">
               <div class="mask rgba-white-slight"></div>
             </a>
@@ -168,9 +189,10 @@
         <!-- Card -->
         <div class="card-cascade narrower card-ecommerce">
           <!-- Card image -->
-          <div class="view overlay product-img zoom">
+          <div class="view overlay product-img zoom container-img">
             <img src="{% static 'images/bottom.jpg' %}" class="card-img-top"
               alt="sample photo">
+              <div class="centered">BOTTOMS</div>
             <a href="/all_product/?c={{p5.pk}}">
               <div class="mask rgba-white-slight"></div>
             </a>
@@ -187,9 +209,10 @@
         <!-- Card -->
         <div class="card-cascade narrower card-ecommerce">
           <!-- Card image -->
-          <div class="view overlay product-img zoom">
-            <img src="{% static 'images/7S.jpg' %}" class="card-img-top"
+          <div class="view overlay product-img zoom container-img">
+            <img src="{% static 'images/winter.jpeg' %}" class="card-img-top"
               alt="sample photo">
+              <div class="centered">WINTER</div>
             <a href="/all_product/?c={{p6.pk}}">
               <div class="mask rgba-white-slight"></div>
             </a>
