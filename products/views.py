@@ -175,20 +175,6 @@ class ContactFormPage(View):
         form = ContactForm(request.POST, request.FILES)
         if form.is_valid():
             c = form.save()
-            # subject = 'Submission Received'
-            # message = form.cleaned_data['message']
-            # email = form.cleaned_data['email']
-            # name = form.cleaned_data['name']
-            # msg = 'Name : ' + name + '\nEmail : ' + email + '\nMessage : ' + message
-            # if c.image:
-            #     msg = msg + '\nImage: https://www.yctees.in/' + c.image.url
-            # try:
-            #     mail = EmailMessage(subject, msg, settings.DEFAULT_FROM_EMAIL, [settings.CONTACT_EMAIL])
-            #     mail.send()
-            #     return redirect('products:list_products')
-            # except:
-            #     messages.error(request, 'Attachment is too big or corrupt. Please try again.')
-            #     return render(request, 'contact_us.html', {'form': form})
         context = {
             'form':form
         }
@@ -202,8 +188,6 @@ def Terms_Condition(request):
 def Privacy_Policy(request):
     return render(request, 'privacy_policy.html' )
 
-
-
 def about_us(request):
     return render(request, 'about_us.html')
 
@@ -213,13 +197,8 @@ def return_refund(request):
 def exchange(request):
     return render(request, 'exchange.html')
 
-
 def size(request):
     return render(request, 'size.html')
-
-
-
-
 
 def how_to_buy(request):
     return render(request, 'how_to_buy.html')

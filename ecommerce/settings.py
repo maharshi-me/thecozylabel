@@ -25,7 +25,7 @@ SECRET_KEY = '^r8ke+agvsc-c2&(9j3w8-%061g%@1u4+!d1$+oatby34=)&zd'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -77,8 +77,6 @@ EMAIL_HOST_PASSWORD = 'Ammu@9000977879'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
-
-CONTACT_EMAIL = 'maharshi3781@gmail.com'
 
 
 
@@ -189,13 +187,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Paytm Settings
 MERCHANT_KEY = '!NU35!Av1e7L78Eu'
 MID = 'GllVbE25290103554044'
-CALLBACK_URL = 'https://maharshi.pythonanywhere.com/orders/handlerequest/'
+CALLBACK_URL = 'http://127.0.0.1:8000/orders/handlerequest/'
 WEBSITE = 'WEBSTAGING'
 
 try:
     from .local import *
 except:
     pass
-
-
-
