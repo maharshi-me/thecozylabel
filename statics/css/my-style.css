@@ -348,6 +348,9 @@ body{
         .mobile-hider{
             display: none;
         }
+        .centered{
+            font-size: xx-small;
+        }
     }
 
 
@@ -356,6 +359,7 @@ body{
         max-width: 1500px;
     }
 }
+
 
 .my-container {
     width: 100%;
