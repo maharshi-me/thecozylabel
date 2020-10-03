@@ -180,25 +180,34 @@
                   height: 1px;
                   background: black; 
                   margin-bottom: 15px; "> -->
+                  {% if product.description %}
                     <p>{{product.description}}</p>
+                  {% endif %}
                   </div>
-          
+                  {% if product.color %}
                   <div >
                     <label class='label-size'>Colour</label>
                     <p>{{product.color}}</p>
                   </div>
+                  {% endif %}
+                  {% if product.material %}
                   <div >
                     <label class='label-size'>Material</label>
                     <p>{{product.material}}</p>
                   </div>
+                  {% endif %}
+                  {% if product.stretchability %}
                   <div >
                     <label class='label-size'>Stretchability</label>
                     <p>{{product.stretchability}}</p>
                   </div>
+                  {% endif %}
+                  {% if product.disclaimer %}
                   <div >
                     <label class='label-size'>Disclaimer</label>
                     <p>{{product.disclaimer}}</p>
                   </div>
+                  {% endif %}
 
                   
 
