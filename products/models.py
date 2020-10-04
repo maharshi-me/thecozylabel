@@ -4,6 +4,7 @@ from django.shortcuts import reverse
 from django.conf import settings
 from django.db.models import Sum
 from multiselectfield import MultiSelectField
+from ecommerce.storage_backends import MediaStorage
 
 
 # Create your models here.
@@ -29,11 +30,11 @@ class Category(models.Model):
 
 class Item(models.Model):
     title = models.CharField(max_length=100)
-    image = models.FileField(upload_to='item_images')
-    image_1 = models.FileField(upload_to='item_images', blank=True)
-    image_2 = models.FileField(upload_to='item_images', blank=True)
-    image_3 = models.FileField(upload_to='item_images', blank=True)
-    image_4 = models.FileField(upload_to='item_images', blank=True)
+    image = models.FileField(storage=MediaStorage(), upload_to='item_images')
+    image_1 = models.FileField(storage=MediaStorage(), upload_to='item_images', blank=True)
+    image_2 = models.FileField(storage=MediaStorage(), upload_to='item_images', blank=True)
+    image_3 = models.FileField(storage=MediaStorage(), upload_to='item_images', blank=True)
+    image_4 = models.FileField(storage=MediaStorage(), upload_to='item_images', blank=True)
     is_in_stock = models.BooleanField(default=True)
     description = models.TextField(blank=True, null=True)
     price = models.FloatField()

@@ -13,6 +13,7 @@ from django.conf import settings
 import requests
 import json
 from django.urls import reverse
+
 # Create your views here.
 
 

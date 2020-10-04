@@ -168,22 +168,22 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-AWS_ACCESS_KEY_ID = 'AKIA6EK5AWOEVHLA2VON'
-AWS_SECRET_ACCESS_KEY = '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'
+AWS_ACCESS_KEY_ID = 'AKIA6EK5AWOE3I7OAPWP'
+AWS_SECRET_ACCESS_KEY = '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'
 AWS_STORAGE_BUCKET_NAME = 'thecozylabel'
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=86400',
 }
-AWS_LOCATION = 'static'
-
+AWS_STATIC_LOCATION = 'static'
+AWS_MEDIA_LOCATION = 'media'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
-STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_STATIC_LOCATION)
+STATICFILES_STORAGE = 'ecommerce.storage_backends.StaticStorage'
+DEFAULT_FILE_STORAGE = 'ecommerce.storage_backends.MediaStorage'
+
 
 AUTH_USER_MODEL = 'users.CustomUser'
 
