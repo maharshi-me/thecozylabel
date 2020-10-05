@@ -39,7 +39,7 @@ class Item(models.Model):
     description = models.TextField(blank=True, null=True)
     price = models.FloatField()
     discount_price = models.FloatField(blank=True, null=True)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='category', blank=True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='category')
     label = models.CharField(choices=LABEL_CHOICES, max_length=1, blank=True)
     sizes = MultiSelectField(choices=SIZE_CHOICES, max_length=100)
     stretchability = models.CharField(max_length=1000, blank=True, null=True)
