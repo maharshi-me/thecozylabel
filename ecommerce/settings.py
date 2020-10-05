@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '^r8ke+agvsc-c2&(9j3w8-%061g%@1u4+!d1$+oatby34=)&zd'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -62,7 +62,7 @@ ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS =1
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_LOGOUT_REDIRECT_URL ='/'
 LOGIN_REDIRECT_URL = '/'
-ACCOUNT_EMAIL_VERIFICATION = "none"
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 5
 ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 86400 
 ACCOUNT_USERNAME_REQUIRED = False
@@ -202,6 +202,9 @@ MERCHANT_KEY = '!NU35!Av1e7L78Eu'
 MID = 'GllVbE25290103554044'
 CALLBACK_URL = 'http://127.0.0.1:8000/orders/handlerequest/'
 WEBSITE = 'WEBSTAGING'
+
+
+FULL_DOMAIN_NAME = "http://127.0.0.1:8000"
 
 try:
     from .local import *
