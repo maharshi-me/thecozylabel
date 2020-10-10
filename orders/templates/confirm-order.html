@@ -20,7 +20,7 @@
                   {% for orderitem in order.orderitem_set.all %}
                   <li class="list-group-item d-flex justify-content-between lh-condensed">
                   <div>
-                      <h6 class="my-0">{{orderitem.item_name}} <small class="text-muted">size: {{orderitem.size}} </small></h6>
+                      <h6 class="my-0">{{orderitem.item_name}} <small class="text-muted">size: {{orderitem.size}} </small><small class="text-muted">colour: {{orderitem.color}} </small></h6>
                       <small class="text-muted">x{{orderitem.quantity}}</small>
                   </div>
                   <span class="text-muted">Rs. {{orderitem.price_total}}</span>

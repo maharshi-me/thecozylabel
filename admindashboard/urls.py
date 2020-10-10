@@ -12,6 +12,8 @@ urlpatterns = [
 	path('items/delete/<int:pk>/', views.ItemDelete.as_view(), name='item-delete'),
 	path('contacts/', views.ContactsList.as_view(), name='contacts-list'),
 	path('contacts/<int:pk>/', views.ContactsDetail.as_view(), name = 'contacts-detail'),
+	path('add-color/', views.AddColor.as_view(), name = 'color-create'),
+	path('colors/', views.Colors.as_view(), name = 'colors'),
 
 
 

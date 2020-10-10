@@ -1,5 +1,5 @@
 from django import forms
-from products.models import Item, Category
+from products.models import Item, Category, Color
 from .models import Contact
 
 class ItemForm(forms.ModelForm):
@@ -19,4 +19,7 @@ class ContactForm(forms.ModelForm):
         fields = ['email','name','message','image']
 
 
-        
+class ColorForm(forms.ModelForm):
+    class Meta:
+        model = Color
+        fields = ['colorcode','name']

@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from orders.models import Order
-from products.models import Item, Category
+from products.models import Item, Category, Color
 from ecommerce.mixins import SuperuserRequiredMixin
 from django.views.generic import View, CreateView, ListView, UpdateView, DeleteView
-from .forms import ItemForm, CategoryForm
+from .forms import ItemForm, CategoryForm, ColorForm
 from .models import Contact
 from django.contrib import messages
 # Create your views here.
@@ -96,3 +96,27 @@ class ContactsDetail(SuperuserRequiredMixin, View):
             'contact': Contact.objects.get(pk=pk)
         }
         return render(request, "admin_contacts_detail.html", context=data)
+
+
+class AddColor(SuperuserRequiredMixin, View):
+    def get(self, request, *args, **kwargs):
+        context = {
+            'form':ColorForm
+        }
+        return render(request, 'admin_color_create.html', context)
+
+    def post(self, request, *args, **kwargs):
+        form = ColorForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('a:colors')
+        context = {
+            'form':ColorForm(request.POST)
+        }
+        return render(request, 'admin_color_create.html', context)
+
+
+class Colors(SuperuserRequiredMixin, ListView):
+    model = Color
+    template_name = 'admin_colors_list.html'
+    context_object_name = 'colors'

@@ -2,16 +2,16 @@
 
 {% block content %}
 <style>
-{% for color in product.colors.all %}
-.color-{{forloop.counter}}{
-    background-color: {{color.colorcode}};
-    border:1px solid grey;
-}
-
-{% endfor %}
-
-
-</style>
+  {% for color in product.colors.all %}
+  .color-{{forloop.counter}}{
+      background-color: {{color.colorcode}};
+      border:1px solid grey;
+  }
+  
+  {% endfor %}
+  
+  
+  </style>
 
   <!--Main layout-->
   <main class="mt-5">
@@ -145,6 +145,17 @@
                     <a href="{% url 'products:size' %}" class='link-text'><b><u>Check Size Guide</u></b></a>
                   </div>
 
+                  <div class='mt-3'>
+                    <label class='label-size'>Select Colour: <span id='color-label'></span></label>
+                </div>
+                  
+                <div class='mb-4'>
+                  {% for color in product.colors.all %}
+                    
+                    <a class='color-{{forloop.counter}} cl' id='{{color}}' data-toggle="tooltip" data-placement="bottom" title='{{color}}'></a>
+                  {% endfor %}
+                </div>
+
                   
 
                   <div class='mt-3'>
@@ -239,15 +250,25 @@
 {% block script %}
 
 
+
 <script>
   var size='Nn';
+  var color='Nn';
   var sp = 0;
+  var cp = 0;
 
     $(".al").click(function(e){
       $(".al").removeClass("al-active")
       $(this).addClass("al-active")
       size = $(this).html()
       $('#size-label').html(size)
+    })
+
+    $(".cl").click(function(e){
+      $(".cl").removeClass("cl-active")
+      $(this).addClass("cl-active")
+      color = $(this).attr('id')
+      $('#color-label').html(color)
     })
     $(document).on('submit', '#form1', function (e) {
       if (size=='Nn'){
@@ -257,10 +278,21 @@
       else{
         sp = 1
       }
-      if (sp == 1) {
+      if (color=='Nn'){
+        $('#color-label').html('Please select colour!')
+        cp = 0
+      }
+      else{
+        cp = 1
+      }
+      if (cp == 1 && sp == 1) {
         $("<input />").attr("type", "hidden")
             .attr("name", "size")
             .attr("value", size)
+            .appendTo("#form1");
+        $("<input />").attr("type", "hidden")
+            .attr("name", "color")
+            .attr("value", color)
             .appendTo("#form1");
         return true;
       }
@@ -269,6 +301,7 @@
       }
     });
 </script>
+
 
 
 {% endblock script %}

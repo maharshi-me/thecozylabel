@@ -23,6 +23,10 @@
 						<th class="font-weight-bold">
 						<strong>Size</strong>
 						</th>
+
+						<th class="font-weight-bold">
+							<strong>Colour</strong>
+						</th>
 						
 						<th class="font-weight-bold">
 						<strong>Price</strong>
@@ -55,6 +59,7 @@
 							</div>
 						</th>
 						<td>{{order_item.size}}</td>
+						<td>{{order_item.color}}</td>
 						
 						{% if order_item.item.discount_price %}
 						<td>Rs. {{order_item.item.discount_price}}  <s><small>{{order_item.item.price}}</small></s></td>

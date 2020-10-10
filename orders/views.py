@@ -78,6 +78,7 @@ class Checkout(LoginRequiredMixin, View):
                 item = cart_item.item,
                 order = order,
                 size = cart_item.size,
+                color = cart_item.color,
                 quantity = cart_item.quantity,
                 price_each = cart_item.get_item_final_price_single(),
                 price_total = cart_item.get_item_final_price(),
@@ -152,21 +153,16 @@ def handlerequest(request):
             message = '[The Cozy Label]: Thanks for shopping with us! We have received your payment of Rs.' + str(order.total) + ' for order no - ' + str(response_dict['ORDERID'])
             user_cart = Cart.objects.get(user=order.customer)
             user_cart.delete()
-           
-            
-            
-            # Generate pdf Invoice
-            # html = render_to_string('pdf.html', {'order':order})
-            # out = BytesIO()
-            # stylesheets=[weasyprint.CSS(settings.STATIC_ROOT +'/css/pdf.css')]
-            # weasyprint.HTML(string=html).write_pdf(out, stylesheets=stylesheets)
+            html = render_to_string('pdf.html', {'order':order})
+            out = BytesIO()
+            weasyprint.HTML(string=html).write_pdf(out)
             link = settings.FULL_DOMAIN_NAME + "/profile/your-orders/" + str(order.pk) + '/'
             subject = 'New order from The Cozy Label'
             email_message = 'Thank you for shopping in TheCozyLabel. Your order details can be viewed here: ' + link
             from_email = settings.DEFAULT_FROM_EMAIL
             to = order.customer.email
             email = EmailMessage(subject,email_message, from_email, [to])
-            # email.attach('invoice.pdf',out.getvalue(), 'application/pdf')
+            email.attach('invoice.pdf',out.getvalue(), 'application/pdf')
             email.send()
             messages.success(request, "Order Placed Successfully.")
         else:

@@ -21,6 +21,14 @@ SIZE_CHOICES = (
     ('XL', 'XL'),
 )
 
+class Color(models.Model):
+    colorcode = models.CharField(max_length=50)
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+
+
 class Category(models.Model):
     name = models.CharField(max_length=20)
 
@@ -41,6 +49,7 @@ class Item(models.Model):
     discount_price = models.FloatField(blank=True, null=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='category')
     label = models.CharField(choices=LABEL_CHOICES, max_length=1, blank=True)
+    colors = models.ManyToManyField(Color)
     sizes = MultiSelectField(choices=SIZE_CHOICES, max_length=100)
     stretchability = models.CharField(max_length=1000, blank=True, null=True)
     material = models.CharField(max_length=1000, blank=True, null=True)
@@ -78,6 +87,7 @@ class Cart(models.Model):
 class Cartitem(models.Model):
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
     size = models.CharField(choices=SIZE_CHOICES, max_length=100)
+    color = models.CharField(max_length=100)
     quantity = models.IntegerField(default=1)
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
 
