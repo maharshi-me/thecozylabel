@@ -157,7 +157,7 @@
             <li class="list-group-item d-flex justify-content-between lh-condensed">
               <div>
                 <h6 class="my-0">
-                  {{item.item.title}} <small class="text-muted">size: {{item.size}} </small> <small class="text-muted">colour: {{item.color}} </small>
+                  {{item.item.title}} {% if item.size %}<small class="text-muted">size: {{item.size}} </small>{% endif %}{% if item.color %}<small class="text-muted">colour: {{item.color}} </small>{% endif %}
                 </h6>
                 <small class="text-muted">x{{item.quantity}}</small>
               </div>

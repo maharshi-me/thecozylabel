@@ -25,6 +25,7 @@
                 <!-- Table head -->
                 <thead class="blue-grey lighten-4">
                   <tr>
+                    <th>Date</th>
                     <th>Order Id</th>
                     <th>Customer</th>
                     <th>Total</th>
@@ -40,6 +41,7 @@
                   {% for order in orders %}
 
                   <tr>
+                    <th>{{order.timestamp}}</th>
                     <th scope="row">{{order.order_id}}</th>
                    
                     <td>{{order.customer}}</td>

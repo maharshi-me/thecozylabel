@@ -116,18 +116,36 @@ class AddToCart(LoginRequiredMixin, View):
         size = request.POST.get('size',None)
         color = request.POST.get('color',None)
         quantity = int(request.POST.get('quantity','1'))
-        if size is None or color is None:
-            messages.error(request, 'Please select Size and color.')
-            return redirect('products:product_detail', pk=item.pk)
         user_cart, _ = Cart.objects.get_or_create(user=request.user)
-        cart_item = user_cart.cartitem_set.all().filter(item=item, size=size, color=color)
+        if size is not None:
+            if color is not None:
+                cart_item = user_cart.cartitem_set.all().filter(item=item, size=size, color=color)
+            else:
+                cart_item = user_cart.cartitem_set.all().filter(item=item, size=size)
+        else:
+            if color is not None:
+                cart_item = user_cart.cartitem_set.all().filter(item=item, color=color)
+            else:
+                cart_item = user_cart.cartitem_set.all().filter(item=item)
+
+
         if cart_item.exists():
             cart_item = cart_item.first()
             for i in range(quantity):
                 cart_item.increment()
             cart_item.save()
         else:
-            cart_item = Cartitem.objects.create(item=item, size=size ,cart=user_cart, color=color, quantity=quantity)
+            if size is not None:
+                if color is not None:
+                    cart_item = Cartitem.objects.create(item=item, size=size ,cart=user_cart, color=color, quantity=quantity)
+                else:
+                    cart_item = Cartitem.objects.create(item=item, size=size ,cart=user_cart, quantity=quantity)
+            else:
+                if color is not None:
+                    cart_item = Cartitem.objects.create(item=item, cart=user_cart, color=color, quantity=quantity)
+                else:
+                    cart_item = Cartitem.objects.create(item=item ,cart=user_cart, quantity=quantity)
+
         messages.info(request, 'Item is added to your cart')
         return redirect('products:cart')
 

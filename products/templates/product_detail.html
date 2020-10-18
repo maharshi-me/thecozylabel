@@ -129,7 +129,7 @@
                   <p style="color: red;">Out of Stock</p>
                   {% endif %}
 
-                  
+            {% if product.sizes %}
                   
                   <div class='form-group size' id='size'>
                     <div class='label-size'>Select Size: <span id='size-label'></span>
@@ -144,6 +144,8 @@
                   <div class="my-2">
                     <a href="{% url 'products:size' %}" class='link-text'><b><u>Check Size Guide</u></b></a>
                   </div>
+          {% endif %}
+          {% if product.colors.all %}
 
                   <div class='mt-3'>
                     <label class='label-size'>Select Colour: <span id='color-label'></span></label>
@@ -155,6 +157,7 @@
                     <a class='color-{{forloop.counter}} cl' id='{{color}}' data-toggle="tooltip" data-placement="bottom" title='{{color}}'></a>
                   {% endfor %}
                 </div>
+          {% endif %}
 
                   
 
@@ -249,58 +252,142 @@
 
 {% block script %}
 
+{% if product.colors.all %}
+    {% if product.sizes %}
+
+      <script>
+        var size='Nn';
+        var color='Nn';
+        var sp = 0;
+        var cp = 0;
+
+          $(".al").click(function(e){
+            $(".al").removeClass("al-active")
+            $(this).addClass("al-active")
+            size = $(this).html()
+            $('#size-label').html(size)
+          })
+
+          $(".cl").click(function(e){
+            $(".cl").removeClass("cl-active")
+            $(this).addClass("cl-active")
+            color = $(this).attr('id')
+            $('#color-label').html(color)
+          })
+          $(document).on('submit', '#form1', function (e) {
+            if (size=='Nn'){
+              $('#size-label').html('Please select size!')
+              sp = 0
+            }
+            else{
+              sp = 1
+            }
+            if (color=='Nn'){
+              $('#color-label').html('Please select colour!')
+              cp = 0
+            }
+            else{
+              cp = 1
+            }
+            if (cp == 1 && sp == 1) {
+              $("<input />").attr("type", "hidden")
+                  .attr("name", "size")
+                  .attr("value", size)
+                  .appendTo("#form1");
+              $("<input />").attr("type", "hidden")
+                  .attr("name", "color")
+                  .attr("value", color)
+                  .appendTo("#form1");
+              return true;
+            }
+            else{
+              return false;
+            }
+          });
+      </script>
+    {% else %}
+    <script>
+      var color='Nn';
+      var cp = 0;
 
 
-<script>
-  var size='Nn';
-  var color='Nn';
-  var sp = 0;
-  var cp = 0;
+        $(".cl").click(function(e){
+          $(".cl").removeClass("cl-active")
+          $(this).addClass("cl-active")
+          color = $(this).attr('id')
+          $('#color-label').html(color)
+        })
+        $(document).on('submit', '#form1', function (e) {
+          if (color=='Nn'){
+            $('#color-label').html('Please select colour!')
+            cp = 0
+          }
+          else{
+            cp = 1
+          }
+          if (cp == 1) {
+            $("<input />").attr("type", "hidden")
+                .attr("name", "color")
+                .attr("value", color)
+                .appendTo("#form1");
+            return true;
+          }
+          else{
+            return false;
+          }
+        });
+    </script>
+    {% endif %}
+{% else %}
+    {% if product.sizes %}
 
-    $(".al").click(function(e){
-      $(".al").removeClass("al-active")
-      $(this).addClass("al-active")
-      size = $(this).html()
-      $('#size-label').html(size)
-    })
+    <script>
+      var size='Nn';
+      var sp = 0;
 
-    $(".cl").click(function(e){
-      $(".cl").removeClass("cl-active")
-      $(this).addClass("cl-active")
-      color = $(this).attr('id')
-      $('#color-label').html(color)
-    })
-    $(document).on('submit', '#form1', function (e) {
-      if (size=='Nn'){
-        $('#size-label').html('Please select size!')
-        sp = 0
-      }
-      else{
-        sp = 1
-      }
-      if (color=='Nn'){
-        $('#color-label').html('Please select colour!')
-        cp = 0
-      }
-      else{
-        cp = 1
-      }
-      if (cp == 1 && sp == 1) {
-        $("<input />").attr("type", "hidden")
-            .attr("name", "size")
-            .attr("value", size)
-            .appendTo("#form1");
-        $("<input />").attr("type", "hidden")
-            .attr("name", "color")
-            .attr("value", color)
-            .appendTo("#form1");
-        return true;
-      }
-      else{
-        return false;
-      }
-    });
-</script>
+        $(".al").click(function(e){
+          $(".al").removeClass("al-active")
+          $(this).addClass("al-active")
+          size = $(this).html()
+          $('#size-label').html(size)
+        })
+
+        $(document).on('submit', '#form1', function (e) {
+          if (size=='Nn'){
+            $('#size-label').html('Please select size!')
+            sp = 0
+          }
+          else{
+            sp = 1
+          }
+          if (sp == 1) {
+            $("<input />").attr("type", "hidden")
+                .attr("name", "size")
+                .attr("value", size)
+                .appendTo("#form1");
+            return true;
+          }
+          else{
+            return false;
+          }
+        });
+    </script>
+
+    {% else %}
+
+    <script>
+
+
+        $(document).on('submit', '#form1', function (e) {
+          return true;
+        });
+    </script>
+
+
+    {% endif %}
+
+{% endif %}
+
 
 
 

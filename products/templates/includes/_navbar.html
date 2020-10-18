@@ -36,15 +36,33 @@
         
           <div class="dropdown-menu dropdown-primary">
             {% for category in all_categories %}
-            <a class="dropdown-item" href="/all_product/?c={{category.pk}}">{{category.name}}</a>      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-  
-  
-      
-      
-            </div>
+              
+            {% if category.name == 'Tops & Blouses' or category.name == 'Dresses' or category.name == 'Jumpsuits' or category.name == "Co ord's" or category.name == 'Bottoms'  or category.name == 'Winter' %}
+            <a class="dropdown-item" href="/all_product/?c={{category.pk}}">{{category.name}}</a>     
+            {% endif %}
+              
+           
+            
             {% endfor %}
             <hr>
             <a class="dropdown-item" href="/all_product/">All products</a>
+          </div>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <div class="dropdown">
+  
+          <button class="btn btn-flat dropdown-toggle" type="button" id="dropdownMenu1" style="margin: 0; box-shadow: unset;" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">Accessories</button>
+        
+          <div class="dropdown-menu dropdown-primary">
+            {% for category in all_categories %}
+            {% if category.name == 'Footwear' or category.name == 'Bags' or category.name == 'Jewellery' %}
+            <a class="dropdown-item" href="/all_product/?c={{category.pk}}">{{category.name}}</a>     
+            {% endif %}
+            {% endfor %}
+            
           </div>
         </div>
       </li>
@@ -121,12 +139,9 @@
       
         <div class="dropdown-menu dropdown-primary">
           {% for category in all_categories %}
-          <a class="dropdown-item" href="/all_product/?c={{category.pk}}">{{category.name}}</a>      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-
-    
-    
-          </div>
+          {% if category.name == 'Tops & Blouses' or category.name == 'Dresses' or category.name == 'Jumpsuits' or category.name == "Co ord's" or category.name == 'Bottoms'  or category.name == 'Winter' %}
+          <a class="dropdown-item" href="/all_product/?c={{category.pk}}">{{category.name}}</a>     
+          {% endif %}
           {% endfor %}
           <hr>
           <a class="dropdown-item" href="/all_product/">All products</a>
@@ -134,6 +149,24 @@
       </div>
     </li>
     
+    <li class="nav-item">
+      <div class="dropdown">
+
+        <button class="btn btn-flat dropdown-toggle" type="button" id="dropdownMenu1" style="margin: 0; box-shadow: unset;" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">Accessories</button>
+      
+        <div class="dropdown-menu dropdown-primary">
+          {% for category in all_categories %}
+          {% if category.name == 'Footwear' or category.name == 'Bags' or category.name == 'Jewellery' %}
+          <a class="dropdown-item" href="/all_product/?c={{category.pk}}">{{category.name}}</a>     
+          {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </li>
+
+
+
     <li class="nav-item">
       <a href="{% url 'products:about_us' %}" type="button" class="btn btn-flat" style="margin: 0; box-shadow: unset; ">About Us</a>
     </li>

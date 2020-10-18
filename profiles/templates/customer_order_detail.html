@@ -35,17 +35,22 @@
                               </thead>
                
                               <tbody>
+
+                                {% if orderitem.size %}
                               
                                 
                                 <tr>
                                   <td class="card-text">Size:</td>
                                   <td class="card-text">{{orderitem.size}}</td>
                                 </tr>
+                                {% endif %}
+                                {% if orderitem.color %}
 
                                 <tr>
                                   <td class="card-text">Colour:</td>
                                   <td class="card-text">{{orderitem.color}}</td>
                                 </tr>
+                                {% endif %}
                                 <tr>
                                   <td class="card-text">Quantity:</td>
                                   <td class="card-text">{{orderitem.quantity}}</td>
