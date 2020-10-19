@@ -78,6 +78,30 @@ class All_ProductsList(ListView):
         if label is not None:
             queryset = queryset.filter(label=label)
             self.title = 'New Arrivals'
+        n = self.request.GET.get('n',None)
+        if n is not None:
+            if n == 'C':
+                queryset = super(All_ProductsList, self).get_queryset()
+                categories = ['Tops & Blouses','Dresses', 'Jumpsuits', "Co ord's", 'Bottoms', 'Winter']
+                self.title = 'All Clothing'
+                queryset = queryset.filter(category__name__in = categories)
+            if n == 'A':
+                queryset = super(All_ProductsList, self).get_queryset()
+                categories = ['Footwear','Bags', 'Jewellery']
+                self.title = 'All Accessories'
+                queryset = queryset.filter(category__name__in = categories)
+        queryset = queryset.order_by('title')
+        s = self.request.GET.get('s',None)
+        if s is not None:
+            if s == 'atoz':
+                queryset = queryset.order_by('title')
+            if s == 'ztoa':
+                queryset = queryset.order_by('-title')
+            if s == 'p1':
+                queryset = queryset.order_by('price')
+            if s == 'p2':
+                queryset = queryset.order_by('-price')
+
         return queryset
 
     def get_context_data(self, **kwargs):

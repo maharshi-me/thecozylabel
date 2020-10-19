@@ -11,9 +11,23 @@
   <!--Navbar-->
     
   <!--/.Navbar-->
-    <h2>{{title}}</h2>
+    <div class="row">
+      <div class="col-8"><h2>{{title}}</h2></div>
+      <div class="col-4">
+      <select id='dynamic_select' name='sort' class="custom-select custom-select-sm mb-3">
+        
+        <option value="{% for key, value in request.GET.items %}{% if key != 's' %}{% if forloop.counter == 1 %}?{{ key }}={{ value }}{% else %}&{{ key }}={{ value }}{% endif %}{% endif %}{% endfor %}{% if request.GET.items %}&s=atoz{% else %}?s=atoz{% endif %}" {% if request.GET.s == "atoz" %} selected {% endif %}>Sort by A to Z</option>
+        <option value="{% for key, value in request.GET.items %}{% if key != 's' %}{% if forloop.counter == 1 %}?{{ key }}={{ value }}{% else %}&{{ key }}={{ value }}{% endif %}{% endif %}{% endfor %}{% if request.GET.items %}&s=ztoa{% else %}?s=ztoa{% endif %}" {% if request.GET.s == 'ztoa' %} selected {% endif %}>Sort by Z to A</option>
+        <option value="{% for key, value in request.GET.items %}{% if key != 's' %}{% if forloop.counter == 1 %}?{{ key }}={{ value }}{% else %}&{{ key }}={{ value }}{% endif %}{% endif %}{% endfor %}{% if request.GET.items %}&s=p1{% else %}?s=p1{% endif %}" {% if request.GET.s == 'p1' %} selected {% endif %}>Sort by price Low to High</option>
+        <option value="{% for key, value in request.GET.items %}{% if key != 's' %}{% if forloop.counter == 1 %}?{{ key }}={{ value }}{% else %}&{{ key }}={{ value }}{% endif %}{% endif %}{% endfor %}{% if request.GET.items %}&s=p2{% else %}?s=p2{% endif %}" {% if request.GET.s == 'p2' %} selected {% endif %}>Sort by price High to Low</option>
+      </select>
+      </div>
+    </div>
+    
+    
     <hr>
     <br>
+
 
   
 
@@ -109,4 +123,19 @@
 <!--Main layout-->
 
 {% endblock content %}
-N
+
+
+{% block script %}
+<script>
+  $(function(){
+    // bind change event to select
+    $('#dynamic_select').on('change', function () {
+        var url = $(this).val(); // get selected value
+        if (url) { // require a URL
+            window.location = url; // redirect
+        }
+        return false;
+    });
+  });
+</script>
+{% endblock %}

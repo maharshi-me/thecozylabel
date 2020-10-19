@@ -24,6 +24,7 @@
                             <!-- Table head -->
                             <thead class="blue-grey lighten-4">
                             <tr>
+                                <th>S.No</th>
                                 <th>Item Name</th>
                                 <th>Category</th>
                                 <th>Price</th>
@@ -38,6 +39,7 @@
                             <tbody>
                             {% for item in items %}
                             <tr>
+                                <td>{{ forloop.counter }}</td>
                                 <td>{{item.title}}</td>
                                 <td>{{item.category.name}}</td>
                                 <td>Rs. {{item.price}}</td>
